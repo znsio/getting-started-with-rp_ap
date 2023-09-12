@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
+import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
+
 public class BaseTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
@@ -65,5 +67,6 @@ public class BaseTest {
     public void log(String message) {
         childTest.log(Status.INFO, message);
         LOGGER.info(message);
+        logInfoMessage(message);
     }
 }
