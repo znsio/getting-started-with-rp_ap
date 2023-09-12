@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.znsio</groupId>
-            <artifactId>report-portal-integration</artifactId>
+            <artifactId>ReportPortalIntegration</artifactId>
             <version>0.0.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -100,4 +100,10 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
