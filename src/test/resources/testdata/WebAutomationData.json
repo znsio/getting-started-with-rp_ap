@@ -1,0 +1,23 @@
+{
+  "name":"WebAutomationData",
+  "description":"Data for Web Automation Tests",
+  "data":{
+    "WebExampleTest":{
+      "titleTest":{
+        "expected":"Test Login | Practice Test Automation"
+      },
+      "validLoginTest":{
+        "value":["student", "Password123"],
+        "expected": "Logged In Successfully"
+      },
+      "invalidUserTest":{
+        "value":["stud", "Password123"],
+        "expected": "Your username is invalid!"
+      },
+      "invalidPasswordTest":{
+        "value":["student", "Password"],
+        "expected": "Your password is invalid!"
+      }
+    }
+  }
+}
