@@ -1,5 +1,6 @@
 package com.znsio.rpap;
 
+import com.applitools.eyes.selenium.fluent.Target;
 import com.epam.reportportal.annotations.Step;
 import com.znsio.rpap.pages.WebExample;
 import com.znsio.rpap.utils.JsonDataManager;
@@ -17,7 +18,8 @@ import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 public class WebExampleTest extends BaseTest {
     private WebExample WebPage;
 
-    @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen")
+    @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
+            groups = { "visual" })
     public void titleTest(String title) {
         test = extent.createTest("Web Automation Tests");
         test.assignCategory("Base Test");
@@ -27,7 +29,8 @@ public class WebExampleTest extends BaseTest {
         verifyPageTitle(title);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password")
+    @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password",
+            groups = { "visual" })
     public void validLoginTest(String username, String password, String expectedMessage) throws InterruptedException {
         test.assignCategory("Positive Scenario");
         childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
@@ -36,7 +39,8 @@ public class WebExampleTest extends BaseTest {
         verifyMessageAfterLogin(expectedMessage);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password")
+    @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password",
+            groups = { "visual" })
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
         test.assignCategory("Negative Scenario");
         childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
@@ -45,7 +49,8 @@ public class WebExampleTest extends BaseTest {
         verifyMessageAfterLogin(expectedMessage);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password")
+    @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
+            groups = { "visual" })
     public void invalidPasswordTest(String username, String password, String expectedMessage)
             throws InterruptedException {
         test.assignCategory("Negative Scenario");
@@ -58,6 +63,7 @@ public class WebExampleTest extends BaseTest {
     @Step
     private void verifyPageTitle(String title) {
         captureScreenShot(driver, "Validating Title of the Screen");
+        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.pageTitle(), title);
     }
 
@@ -65,11 +71,13 @@ public class WebExampleTest extends BaseTest {
     private void performLogin(String username, String password) throws InterruptedException {
         log("Entering username and password");
         WebPage.login(username, password);
+        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
     private void verifyMessageAfterLogin(String expectedMessage) {
         captureScreenShot(driver, "Verifying post login message");
+        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.getPostSubmitMessage(), expectedMessage);
     }
 

@@ -29,17 +29,6 @@
             <artifactId>selenium-api</artifactId>
             <version>4.12.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.applitools/eyes-selenium-java3 -->
-        <dependency>
-            <groupId>com.applitools</groupId>
-            <artifactId>eyes-selenium-java5</artifactId>
-            <version>5.48.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.znsio</groupId>
-            <artifactId>ReportPortalIntegration</artifactId>
-            <version>0.0.1</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -52,6 +41,16 @@
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>4.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.znsio</groupId>
+            <artifactId>ReportPortalIntegration</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.znsio</groupId>
+            <artifactId>ApplitoolsIntegration</artifactId>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 

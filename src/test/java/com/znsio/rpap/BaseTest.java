@@ -1,5 +1,6 @@
 package com.znsio.rpap;
 
+import com.znsio.api.VisualTest;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +25,7 @@ import java.time.Duration;
 
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
-public class BaseTest {
+public class BaseTest extends VisualTest {
     protected static WebDriver driver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
@@ -40,9 +41,10 @@ public class BaseTest {
                 System.getProperty("suiteXmlFile"));
         XmlSuite xmlSuite = parser.parseToList().get(0);
         extent = ExtentReportSetup.initExtentReport(extent, xmlSuite.getName(), xmlSuite.getTests().get(0).getName());
-        LOGGER.info("Report initiated and got config data ");
+        LOGGER.info("Report initiated and got config data");
         driver = BrowserFactory.launchApplication(driver, prop.getBrowser(), prop.getAppURL());
         wait = new WebDriverWait(driver, Duration.ofSeconds(prop.getNumber("PAGELOADTIME")));
+        VisualTest.driverSetupForVisualTest(driver);
         LOGGER.info("Browser Ready");
     }
 
