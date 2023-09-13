@@ -72,7 +72,8 @@ public class BasePage extends Page {
     public void PageLoadWait(WebDriverWait wait) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
+                        .toString().equals("complete");
             }
         };
         try {

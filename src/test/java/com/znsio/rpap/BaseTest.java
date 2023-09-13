@@ -25,25 +25,24 @@ import java.time.Duration;
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class BaseTest {
-    public static WebDriver driver;
-    public static WebDriverWait wait;
-    public ConfigDataProvider prop;
-    public Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
-    public static ExtentReports extent;
-    public static ExtentTest test;
-    public static ExtentTest childTest;
-    public Page page;
+    protected static WebDriver driver;
+    private static WebDriverWait wait;
+    private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
+    protected static ExtentReports extent;
+    protected static ExtentTest test;
+    protected static ExtentTest childTest;
+    protected Page page;
 
     @BeforeSuite
     public void SuiteSetup() throws IOException {
-        prop = new ConfigDataProvider();
+        ConfigDataProvider prop = new ConfigDataProvider();
         Parser parser = new Parser(System.getProperty("user.dir") + File.separator +
                 System.getProperty("suiteXmlFile"));
         XmlSuite xmlSuite = parser.parseToList().get(0);
         extent = ExtentReportSetup.initExtentReport(extent, xmlSuite.getName(), xmlSuite.getTests().get(0).getName());
         LOGGER.info("Report initiated and got config data ");
         driver = BrowserFactory.launchApplication(driver, prop.getBrowser(), prop.getAppURL());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(prop.getNumber("pageloadtime")));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(prop.getNumber("PAGELOADTIME")));
         LOGGER.info("Browser Ready");
     }
 

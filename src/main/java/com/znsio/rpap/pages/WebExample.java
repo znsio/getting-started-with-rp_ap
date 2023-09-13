@@ -11,14 +11,12 @@ public class WebExample extends BasePage {
         PageLoadWait(wait);
     }
 
-    //locators
     By usernameField = By.id("username");
     By passwordField = By.id("password");
     By submitButton = By.id("submit");
     By postSubmitSuccessMessage = By.xpath("//h1[text()='Logged In Successfully']");
     By postSubmitErrorMessage = By.xpath("//div[@id='error']");
 
-    //actions
 
     public String pageTitle() {
         return driver.getTitle();
