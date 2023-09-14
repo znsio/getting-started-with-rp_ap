@@ -2,8 +2,8 @@
 Sample tests to show how to use ReportPortalIntegration and ApplitoolsIntegration utilities
 
 ## Build
-`mvn clean install -DskipTests `
+`mvn clean install -DskipTests -s ./settings.xml`
 
 ## Execute Tests
 ### WebTests
-` mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
+`mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/webConfig.properties -s ./settings.xml`
