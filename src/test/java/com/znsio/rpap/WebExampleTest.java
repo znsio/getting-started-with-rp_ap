@@ -6,7 +6,6 @@ import com.znsio.rpap.pages.WebExample;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -19,42 +18,33 @@ public class WebExampleTest extends BaseTest {
     private WebExample WebPage;
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
-            groups = { "visual" })
+            groups = {"visual"})
     public void titleTest(String title) {
-        test = extent.createTest("Web Automation Tests");
-        test.assignCategory("Base Test");
-        childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
 
         WebPage = page.getClassInstance(WebExample.class);
         verifyPageTitle(title);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password",
-            groups = { "visual" })
+            groups = {"visual"})
     public void validLoginTest(String username, String password, String expectedMessage) throws InterruptedException {
-        test.assignCategory("Positive Scenario");
-        childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
 
         performLogin(username, password);
         verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password",
-            groups = { "visual" })
+            groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
-        test.assignCategory("Negative Scenario");
-        childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
 
         performLogin(username, password);
         verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
-            groups = { "visual" })
+            groups = {"visual"})
     public void invalidPasswordTest(String username, String password, String expectedMessage)
             throws InterruptedException {
-        test.assignCategory("Negative Scenario");
-        childTest = test.createNode(Reporter.getCurrentTestResult().getMethod().getDescription());
 
         performLogin(username, password);
         verifyMessageAfterLogin(expectedMessage);
