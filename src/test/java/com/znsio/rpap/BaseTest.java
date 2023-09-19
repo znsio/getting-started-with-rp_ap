@@ -27,7 +27,7 @@ public class BaseTest extends VisualTest {
         ConfigDataProvider prop = new ConfigDataProvider();
         LOGGER.info("Retrieved config data");
         driver = BrowserFactory.launchApplication(driver, prop.getBrowser(), prop.getAppURL());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(prop.getNumber("PAGELOADTIME")));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(prop.getNumber("PAGE_LOAD_TIME")));
         VisualTest.driverSetupForVisualTest(driver);
         LOGGER.info("Browser Ready");
     }
