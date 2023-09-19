@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ReportPortalIntegration</artifactId>
-            <version>32013cb909</version>
+            <version>2fcfa642e6</version>
         </dependency>
         <dependency>
             <groupId>com.github.znsio</groupId>
