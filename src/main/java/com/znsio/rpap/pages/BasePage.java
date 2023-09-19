@@ -15,7 +15,7 @@ public class BasePage extends Page {
         super(driver, wait);
     }
 
-    public void inputDataToElement(By by, String dataToInput)  {
+    public void inputDataToElement(By by, String dataToInput) {
 
         WebElement ele = driver.findElement(by);
         String tagName = ele.getTagName();
@@ -30,8 +30,8 @@ public class BasePage extends Page {
 
             scrollToView(by);
             ele.clear();
-            ele.sendKeys(new CharSequence[] { dataToInput });
-            ele.sendKeys(new CharSequence[] { Keys.TAB });
+            ele.sendKeys(new CharSequence[]{dataToInput});
+            ele.sendKeys(new CharSequence[]{Keys.TAB});
 
         } else if (tagName.equals("input")) {
             String inputType = ele.getAttribute("type");
@@ -39,20 +39,16 @@ public class BasePage extends Page {
 
             if ((inputType.equals("text")) || (inputType.equals("email")) || (inputType.equals("password"))) {
                 ele.clear();
-                ele.sendKeys(new CharSequence[] { dataToInput });
-                ele.sendKeys(new CharSequence[] { Keys.TAB });
-            }
-
-            else if (inputType.equals("checkbox")) {
+                ele.sendKeys(new CharSequence[]{dataToInput});
+                ele.sendKeys(new CharSequence[]{Keys.TAB});
+            } else if (inputType.equals("checkbox")) {
                 if ((!ele.isSelected()) && (dataToInput.equals("1"))) {
                     ele.click();
 
                 } else if ((ele.isSelected()) && (dataToInput.equals("0"))) {
                     ele.click();
                 }
-            }
-
-            else if (inputType.equals("radio")) {
+            } else if (inputType.equals("radio")) {
                 if ((!ele.isSelected()) && (dataToInput.equals("1"))) {
                     ele.click();
                 }
@@ -65,7 +61,7 @@ public class BasePage extends Page {
     }
 
     public void scrollToView(By by) {
-        JavascriptExecutor jsDriver = (JavascriptExecutor)driver;
+        JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
         jsDriver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(by));
     }
 

@@ -21,16 +21,18 @@ public class WebExample extends BasePage {
     public String pageTitle() {
         return driver.getTitle();
     }
+
     public void login(String username, String password) throws InterruptedException {
         inputDataToElement(usernameField, username);
         inputDataToElement(passwordField, password);
         driver.findElement(submitButton).click();
         Thread.sleep(200);
     }
+
     public String getPostSubmitMessage() {
-        if(driver.findElements(postSubmitErrorMessage).size() > 0) {
+        if (driver.findElements(postSubmitErrorMessage).size() > 0) {
             return driver.findElement(postSubmitErrorMessage).getText();
-        } else{
+        } else {
             return driver.findElement(postSubmitSuccessMessage).getText();
         }
     }

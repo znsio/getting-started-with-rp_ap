@@ -2,15 +2,20 @@ package com.znsio.rpap.utils;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Properties;
+
 import com.google.gson.Gson;
+import com.znsio.rpi.properties.Config;
 
 public class JsonDataProvider {
+    private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
+
     public static JsonDataManager loadData() throws Exception {
-        ConfigDataProvider configData = new ConfigDataProvider();
-        String filePath = configData.getData("TEST_DATA_FILE");
-        InputStreamReader reader = new InputStreamReader(new FileInputStream(filePath), "UTF-8");
+        String filePath = config.getProperty(Config.TEST_DATA_FILE);
+        InputStreamReader reader = new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
         Gson gson = new Gson();
-        JsonDataManager data = (JsonDataManager) gson.fromJson(reader, JsonDataManager.class);
+        JsonDataManager data = gson.fromJson(reader, JsonDataManager.class);
         return data;
     }
 }

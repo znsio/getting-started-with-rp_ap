@@ -10,15 +10,13 @@ public class BrowserFactory {
 
     public static WebDriver launchApplication(WebDriver driver, String browserName, String appURL) {
 
-        if(browserName.equalsIgnoreCase("chrome")) {
+        if (browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
             driver = new ChromeDriver();
-        }
-        else if(browserName.equalsIgnoreCase("firefox")) {
+        } else if (browserName.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.chrome.driver", "./drivers/geckodriver");
             driver = new FirefoxDriver();
-        }
-        else {
+        } else {
             LOGGER.info("Test not support to browser: " + browserName);
         }
 
