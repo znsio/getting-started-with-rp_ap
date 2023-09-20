@@ -17,7 +17,7 @@ import java.util.Properties;
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class BaseTest extends VisualTest {
-    protected static WebDriver driver;
+    protected static WebDriver webDriver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
@@ -26,21 +26,21 @@ public class BaseTest extends VisualTest {
     @BeforeSuite
     public void SuiteSetup() {
         LOGGER.info("Retrieved config data");
-        driver = BrowserFactory.launchApplication(driver, config.getProperty(Config.BROWSER),
+        webDriver = BrowserFactory.launchApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-        VisualTest.driverSetupForVisualTest(driver);
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+        VisualTest.driverSetupForVisualTest(webDriver);
         LOGGER.info("Browser Ready");
     }
 
     @BeforeMethod
     public void MethodSetup() {
-        page = new Page(driver, wait);
+        page = new Page(webDriver, wait);
     }
 
     @AfterSuite
     public void suiteTearDown() {
-        driver.quit();
+        webDriver.quit();
         LOGGER.info("Report created");
     }
 

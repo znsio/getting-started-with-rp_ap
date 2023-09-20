@@ -52,8 +52,8 @@ public class WebExampleTest extends BaseTest {
 
     @Step
     private void verifyPageTitle(String title) {
-        captureScreenShot(driver, "Validating Title of the Screen");
-        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+        captureScreenShot(webDriver, "Validating Title of the Screen");
+        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.pageTitle(), title);
     }
 
@@ -61,13 +61,13 @@ public class WebExampleTest extends BaseTest {
     private void performLogin(String username, String password) throws InterruptedException {
         log("Entering username and password");
         WebPage.login(username, password);
-        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
     private void verifyMessageAfterLogin(String expectedMessage) {
-        captureScreenShot(driver, "Verifying post login message");
-        eyes.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+        captureScreenShot(webDriver, "Verifying post login message");
+        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.getPostSubmitMessage(), expectedMessage);
     }
 
