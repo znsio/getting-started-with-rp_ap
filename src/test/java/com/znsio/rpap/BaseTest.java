@@ -27,8 +27,8 @@ public class BaseTest extends VisualTest {
     public void SuiteSetup() {
         LOGGER.info("Retrieved config data");
         driver = BrowserFactory.launchApplication(driver, config.getProperty(Config.BROWSER),
-                config.getProperty(Config.URL));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(config.getProperty(Config.PAGE_LOAD_TIME))));
+                config.getProperty("URL"));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
         VisualTest.driverSetupForVisualTest(driver);
         LOGGER.info("Browser Ready");
     }
