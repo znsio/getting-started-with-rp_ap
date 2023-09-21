@@ -36,8 +36,8 @@ public class BaseTest extends VisualTest {
             LOGGER.info("Browser Ready");
         } else if (config.getProperty("PLATFORM").equals("android")) {
             webDriver = BrowserFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE"), (config.getProperty("APP_ACTIVITY")));
-            wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-            VisualTest.driverSetupForVisualTest(webDriver);
+    //        wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+    //        VisualTest.driverSetupForVisualTest(webDriver);
             LOGGER.info("Android App Ready");
         } else {
             LOGGER.info("Not yet implemented");
