@@ -1,0 +1,12 @@
+{
+  "name":"AppAutomationData",
+  "description":"Data for App Automation Tests",
+  "data":{
+    "AppExampleTest":{
+      "calculatorTest":{
+        "value":["2","plus", "5","equals"],
+        "expected": "7"
+      }
+    }
+  }
+}
