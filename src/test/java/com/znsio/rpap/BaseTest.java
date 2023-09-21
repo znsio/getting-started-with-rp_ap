@@ -2,7 +2,6 @@ package com.znsio.rpap;
 
 import com.znsio.api.VisualTest;
 import com.znsio.rpi.properties.Config;
-import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

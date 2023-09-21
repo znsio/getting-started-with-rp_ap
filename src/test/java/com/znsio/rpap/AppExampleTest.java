@@ -5,13 +5,10 @@ import com.znsio.rpap.pages.AppExample;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.lang.reflect.Method;
-
 import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 
 public class AppExampleTest extends BaseTest {
@@ -45,7 +42,7 @@ public class AppExampleTest extends BaseTest {
     private void selectNumber(String number) {
         LOGGER.info("Select No." + number);
         AppPage.chooseNumber(number);
-        captureScreenShot(webDriver, "Number selected" + number);
+        captureScreenShot(webDriver, "Number selected " + number);
 
     }
 
