@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BrowserFactory {
-    private static final Logger LOGGER = Logger.getLogger(BrowserFactory.class.getName());
+public class DriverFactory {
+    private static final Logger LOGGER = Logger.getLogger(DriverFactory.class.getName());
 
-    public static WebDriver launchApplication(WebDriver driver, String browserName, String appURL) {
+    public static WebDriver launchWebApplication(WebDriver driver, String browserName, String appURL) {
 
         if (browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
@@ -19,12 +19,9 @@ public class BrowserFactory {
         } else {
             LOGGER.info("Test not support to browser: " + browserName);
         }
-
         driver.get(appURL);
-
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-
         return driver;
     }
 }

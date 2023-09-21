@@ -9,7 +9,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import com.znsio.rpap.pages.Page;
-import com.znsio.rpap.utils.BrowserFactory;
+import com.znsio.rpap.utils.DriverFactory;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -26,7 +26,7 @@ public class BaseTest extends VisualTest {
     @BeforeSuite
     public void SuiteSetup() {
         LOGGER.info("Retrieved config data");
-        webDriver = BrowserFactory.launchApplication(webDriver, config.getProperty(Config.BROWSER),
+        webDriver = DriverFactory.launchWebApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
         VisualTest.driverSetupForVisualTest(webDriver);
