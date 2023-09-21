@@ -21,5 +21,5 @@ Sample tests to show how to use ReportPortalIntegration and ApplitoolsIntegratio
 ### WebTests
 `mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
 ### AppTests
-#### Android
+#### [WIP] Android
 `mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
