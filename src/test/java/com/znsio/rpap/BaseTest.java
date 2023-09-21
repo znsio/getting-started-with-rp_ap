@@ -2,6 +2,7 @@ package com.znsio.rpap;
 
 import com.znsio.api.VisualTest;
 import com.znsio.rpi.properties.Config;
+import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,6 +12,7 @@ import org.testng.annotations.BeforeSuite;
 import com.znsio.rpap.pages.Page;
 import com.znsio.rpap.utils.BrowserFactory;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -24,13 +26,22 @@ public class BaseTest extends VisualTest {
     protected Page page;
 
     @BeforeSuite
-    public void SuiteSetup() {
+    public void SuiteSetup() throws MalformedURLException {
         LOGGER.info("Retrieved config data");
-        webDriver = BrowserFactory.launchApplication(webDriver, config.getProperty(Config.BROWSER),
-                config.getProperty("URL"));
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-        VisualTest.driverSetupForVisualTest(webDriver);
-        LOGGER.info("Browser Ready");
+        if (config.getProperty("PLATFORM").equals("web")) {
+            webDriver = BrowserFactory.launchApplication(webDriver, config.getProperty(Config.BROWSER),
+                    config.getProperty("URL"));
+            wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+            VisualTest.driverSetupForVisualTest(webDriver);
+            LOGGER.info("Browser Ready");
+        } else if (config.getProperty("PLATFORM").equals("android")) {
+            webDriver = BrowserFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE"), (config.getProperty("APP_ACTIVITY")));
+            wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+            VisualTest.driverSetupForVisualTest(webDriver);
+            LOGGER.info("Android App Ready");
+        } else {
+            LOGGER.info("Not yet implemented");
+        }
     }
 
     @BeforeMethod
