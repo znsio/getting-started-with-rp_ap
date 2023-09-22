@@ -1,8 +1,8 @@
 package com.znsio.rpap.pages;
 
+import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class AppExample extends BasePage {
         OPERATION_MAP.put("equals", "equal");
     }
 
-    public AppExample(WebDriver driver, WebDriverWait wait) {
+    public AppExample(AppiumDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 

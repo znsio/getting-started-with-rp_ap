@@ -8,10 +8,12 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.lang.reflect.Method;
+
 import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 
-public class AppExampleTest extends BaseTest {
+public class AppExampleTest extends AppBaseTest {
 
     private AppExample AppPage;
 
@@ -21,8 +23,8 @@ public class AppExampleTest extends BaseTest {
             groups = {"visual"})
     public void calculatorTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
 
-        AppPage = page.getClassInstance(AppExample.class);
-        captureScreenShot(webDriver, "Validating Calculator screen");
+        AppPage = page.getClassInstanceApp(AppExample.class);
+        captureScreenShot(appDriver, "Validating Calculator screen");
         startCalculator();
         selectNumber(input1);
         pressOperator(operator1);
@@ -35,14 +37,14 @@ public class AppExampleTest extends BaseTest {
     private void startCalculator() {
         log("Handling calculator popUps");
         AppPage.handlePopupIfPresent();
-        captureScreenShot(webDriver, "Pop Ups handled on calculator");
+        captureScreenShot(appDriver, "Pop Ups handled on calculator");
     }
 
     @Step
     private void selectNumber(String number) {
         LOGGER.info("Select No." + number);
         AppPage.chooseNumber(number);
-        captureScreenShot(webDriver, "Number selected " + number);
+        captureScreenShot(appDriver, "Number selected " + number);
 
     }
 
@@ -50,7 +52,7 @@ public class AppExampleTest extends BaseTest {
     private void pressOperator(String operation) {
         LOGGER.info("Select Calculator Operation " + operation);
         AppPage.chooseOperation(operation);
-        captureScreenShot(webDriver, "Operator selected " + operation);
+        captureScreenShot(appDriver, "Operator selected " + operation);
 
     }
 
@@ -61,7 +63,7 @@ public class AppExampleTest extends BaseTest {
         String actualOutput = AppPage.getCalculatorDisplay();
         LOGGER.info("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
-        captureScreenShot(webDriver, "Final result captured");
+        captureScreenShot(appDriver, "Final result captured");
 
     }
 
