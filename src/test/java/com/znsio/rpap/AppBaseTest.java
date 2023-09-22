@@ -36,8 +36,7 @@ public class AppBaseTest extends VisualTest {
     public void SuiteSetup() throws MalformedURLException {
         LOGGER.info("Retrieved config data");
         String dynamicAppiumUrl = startAppiumServer();
-        LOGGER.info("Appium Started working");
-        appDriver = BrowserFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE"),config.getProperty("APP_ACTIVITY"),dynamicAppiumUrl);
+        appDriver = BrowserFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE_NAME"),config.getProperty("APP_ACTIVITY"),dynamicAppiumUrl);
         wait = new WebDriverWait(appDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
         VisualTest.driverSetupForVisualTest(appDriver);
         LOGGER.info("Android App Ready");
@@ -73,9 +72,8 @@ public class AppBaseTest extends VisualTest {
         serviceBuilder.withArgument(GeneralServerFlag.RELAXED_SECURITY);
         localAppiumServer = AppiumDriverLocalService.buildService(serviceBuilder);
         localAppiumServer.start();
-        LOGGER.info("Appium server started on URL: " + localAppiumServer.getUrl());
         APPIUM_SERVER_URL = localAppiumServer.getUrl().toString();
-        LOGGER.info("Appium server started on url:" + localAppiumServer.getUrl());
-        return localAppiumServer.getUrl().toString();
+        LOGGER.info("Appium server started on url :" + APPIUM_SERVER_URL);
+        return APPIUM_SERVER_URL;
     }
 }
