@@ -8,9 +8,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.lang.reflect.Method;
-
 import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 
 public class AppExampleTest extends AppBaseTest {
