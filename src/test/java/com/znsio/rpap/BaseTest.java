@@ -1,6 +1,6 @@
 package com.znsio.rpap;
 
-import com.znsio.api.VisualTest;
+import com.znsio.api.ApplitoolsInitializer;
 import com.znsio.rpi.properties.Config;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +16,7 @@ import java.util.Properties;
 
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
-public class BaseTest extends VisualTest {
+public class BaseTest extends ApplitoolsInitializer {
     protected static WebDriver webDriver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
@@ -29,7 +29,7 @@ public class BaseTest extends VisualTest {
         webDriver = DriverFactory.launchWebApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-        VisualTest.driverSetupForVisualTest(webDriver);
+        ApplitoolsInitializer.driverSetupForApplitoolsInitializer(webDriver);
         LOGGER.info("Browser Ready");
     }
 
