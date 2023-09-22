@@ -40,38 +40,41 @@ public class BrowserFactory {
         return driver;
     }
 
-    public static AppiumDriver launchMobileApp(String platformName, String automationName, String appPackage, String appActivity) throws MalformedURLException, MalformedURLException {
-        //     startAppiumServer();
+    public static AppiumDriver launchMobileApp(String platformName, String automationName, String appPackage, String appActivity) throws MalformedURLException {
+        startAppiumServer();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
         desiredCapabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk");
         desiredCapabilities.setCapability("appPackage", appPackage);
         desiredCapabilities.setCapability("appActivity", appActivity);
+        desiredCapabilities.setCapability("autoGrantPermissions",true);
+        desiredCapabilities.setCapability("fullReset", true);
         AppiumDriver driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), desiredCapabilities);
         return driver;
 
     }
 
 
-    private static void startAppiumServer() {
+    public static void startAppiumServer() {
         LOGGER.info("Start local Appium server");
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
-        // Use any port, in case the default 4723 is already taken (maybe by another Appium server)
-        //     serviceBuilder.usingAnyFreePort();
+        serviceBuilder.usingAnyFreePort();
+        serviceBuilder.withLogFile(new File("./target/appium_logs.txt"));
         serviceBuilder.withArgument(GeneralServerFlag.ALLOW_INSECURE, "adb_shell");
         serviceBuilder.withArgument(GeneralServerFlag.RELAXED_SECURITY);
-        serviceBuilder.withLogFile(new File("appium.log"));
-        //       serviceBuilder.withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"));
-
-        // Appium 2.x
         localAppiumServer = AppiumDriverLocalService.buildService(serviceBuilder);
-
         localAppiumServer.start();
-        APPIUM_SERVER_URL = localAppiumServer.getUrl()
-                .toString();
-        System.out.println(String.format("Appium server started on url: '%s'",
-                localAppiumServer.getUrl()
-                        .toString()));
+        LOGGER.info("Appium server started on URL: " + localAppiumServer.getUrl());
+        APPIUM_SERVER_URL = localAppiumServer.getUrl().toString();
+        LOGGER.info("Appium server started on url:" + localAppiumServer.getUrl());
+    }
+
+    public static void stopAppiumServer() {
+        LOGGER.info("Stopping the local Appium server running on: " +APPIUM_SERVER_URL);
+        if(null != localAppiumServer) {
+            localAppiumServer.stop();
+            LOGGER.info("Is Appium server running? " + localAppiumServer.isRunning());
+        }
     }
 }
