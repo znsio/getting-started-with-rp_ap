@@ -8,9 +8,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.lang.reflect.Method;
-
 import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 
 public class AppExampleTest extends AppBaseTest {
@@ -25,10 +23,7 @@ public class AppExampleTest extends AppBaseTest {
         AppPage = page.getClassInstanceApp(AppExample.class);
         captureScreenShot(appDriver, "Validating Calculator screen");
         startCalculator();
-        selectNumber(input1);
-        pressOperator(operator1);
-        selectNumber(input2);
-        pressOperator(operator2);
+        performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }
 
@@ -37,10 +32,7 @@ public class AppExampleTest extends AppBaseTest {
     public void SubtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         captureScreenShot(appDriver, "Validating Calculator screen");
         startCalculator();
-        selectNumber(input1);
-        pressOperator(operator1);
-        selectNumber(input2);
-        pressOperator(operator2);
+        performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }
 
@@ -53,22 +45,6 @@ public class AppExampleTest extends AppBaseTest {
     }
 
     @Step
-    private void selectNumber(String number) {
-        LOGGER.info("Select No." + number);
-        AppPage.chooseNumber(number);
-        captureScreenShot(appDriver, "Number selected " + number);
-        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-    }
-
-    @Step
-    private void pressOperator(String operation) {
-        LOGGER.info("Select Calculator Operation " + operation);
-        AppPage.chooseOperation(operation);
-        captureScreenShot(appDriver, "Operator selected " + operation);
-        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-    }
-
-    @Step
     private void verifyResult(String expected) {
         LOGGER.info("Validating calculator output ");
         LOGGER.info("Expected output " + expected);
@@ -77,6 +53,22 @@ public class AppExampleTest extends AppBaseTest {
         Assert.assertEquals(expected, actualOutput);
         captureScreenShot(appDriver, "Final result captured");
         //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+    }
+
+    @Step
+    public void performOperation(String input1, String operator1, String input2, String operator2) {
+        LOGGER.info("Select No." + input1);
+        AppPage.chooseNumber(input1);
+        captureScreenShot(appDriver, "Number selected " + input1);
+        LOGGER.info("Select Calculator Operation " + operator1);
+        AppPage.chooseOperation(operator1);
+        captureScreenShot(appDriver, "Operator selected " + operator1);
+        LOGGER.info("Select No." + input2);
+        AppPage.chooseNumber(input2);
+        captureScreenShot(appDriver, "Number selected " + input2);
+        LOGGER.info("Select Calculator Operation " + operator2);
+        AppPage.chooseOperation(operator2);
+        captureScreenShot(appDriver, "Operator selected " + operator2);
     }
 
 
