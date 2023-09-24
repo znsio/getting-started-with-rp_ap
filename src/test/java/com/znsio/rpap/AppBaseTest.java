@@ -13,12 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
-
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class AppBaseTest extends VisualTest {
@@ -29,7 +27,6 @@ public class AppBaseTest extends VisualTest {
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
     private static AppiumDriverLocalService localAppiumServer;
     private static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub/";
-
     protected Page page;
 
     @BeforeSuite
@@ -40,7 +37,6 @@ public class AppBaseTest extends VisualTest {
         wait = new WebDriverWait(appDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
         VisualTest.driverSetupForVisualTest(appDriver);
         LOGGER.info("Android App Ready");
-
     }
 
     @BeforeMethod
@@ -61,7 +57,6 @@ public class AppBaseTest extends VisualTest {
         LOGGER.info(message);
         logInfoMessage(message);
     }
-
 
     public static String startAppiumServer() {
         LOGGER.info("Start local Appium server");
