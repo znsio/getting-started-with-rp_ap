@@ -8,7 +8,9 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.lang.reflect.Method;
+
 import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
 
 public class AppExampleTest extends AppBaseTest {
@@ -17,11 +19,22 @@ public class AppExampleTest extends AppBaseTest {
 
     private static final Logger LOGGER = Logger.getLogger(AppExampleTest.class.getName());
 
-    @Test(dataProvider = "getFromJson", priority = -1, description = "Perform operations on two no. on calculator",
+    @Test(dataProvider = "getFromJson", priority = -2, description = "Perform addition of two no. on calculator",
             groups = {"visual"})
-    public void calculatorTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-
+    public void AdditionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         AppPage = page.getClassInstanceApp(AppExample.class);
+        captureScreenShot(appDriver, "Validating Calculator screen");
+        startCalculator();
+        selectNumber(input1);
+        pressOperator(operator1);
+        selectNumber(input2);
+        pressOperator(operator2);
+        verifyResult(expectedMsg);
+    }
+
+    @Test(dataProvider = "getFromJson", priority = -1, description = "Perform subtraction of two no. on calculator",
+            groups = {"visual"})
+    public void SubtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         captureScreenShot(appDriver, "Validating Calculator screen");
         startCalculator();
         selectNumber(input1);
@@ -36,6 +49,7 @@ public class AppExampleTest extends AppBaseTest {
         log("Handling calculator popUps");
         AppPage.handlePopupIfPresent();
         captureScreenShot(appDriver, "Pop Ups handled on calculator");
+        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
@@ -43,7 +57,7 @@ public class AppExampleTest extends AppBaseTest {
         LOGGER.info("Select No." + number);
         AppPage.chooseNumber(number);
         captureScreenShot(appDriver, "Number selected " + number);
-
+        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
@@ -51,7 +65,7 @@ public class AppExampleTest extends AppBaseTest {
         LOGGER.info("Select Calculator Operation " + operation);
         AppPage.chooseOperation(operation);
         captureScreenShot(appDriver, "Operator selected " + operation);
-
+        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
@@ -62,7 +76,7 @@ public class AppExampleTest extends AppBaseTest {
         LOGGER.info("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
         captureScreenShot(appDriver, "Final result captured");
-
+        //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
 
