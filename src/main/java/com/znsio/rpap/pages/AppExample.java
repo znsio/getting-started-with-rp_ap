@@ -29,14 +29,12 @@ public class AppExample extends BasePage {
     }
 
     public void handlePopupIfPresent() {
-        boolean isUpgradeAppNotificationElement = isElementPresent(
-                ByCheckForUpdateId);
+        boolean isUpgradeAppNotificationElement = isElementPresent(ByCheckForUpdateId);
         if (isUpgradeAppNotificationElement) {
             driver.findElement(ByCheckForUpdateId).click();
             waitFor(1);
         }
-        boolean isClingElementPresent = isElementPresent(
-                ByWelcomeMsgId);
+        boolean isClingElementPresent = isElementPresent(ByWelcomeMsgId);
         if (isClingElementPresent) {
             driver.findElement(ByWelcomeMsgId).click();
             waitFor(1);
@@ -61,7 +59,6 @@ public class AppExample extends BasePage {
 
     public void chooseOperation(String operation) {
         String mappedOperation = OPERATION_MAP.get(operation.toLowerCase());
-
         if (mappedOperation == null) {
             throw new RuntimeException("Operation " + operation + " is not supported");
         }
