@@ -12,7 +12,8 @@ public class DriverFactory {
 
         if (browserName.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {g
+        } else if (browserName.equalsIgnoreCase("firefox")) {
+            
             driver = new FirefoxDriver();
         } else {
             LOGGER.info("Test not support to browser: " + browserName);
