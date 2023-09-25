@@ -13,18 +13,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
+
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class AppBaseTest extends ApplitoolsInitializer {
+
+    //   private static final String APK_LOCATION = System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk";
+//    private static final String APK_LOCATION = "https://github.com/anandbagmar/sampleAppsForNativeMobileAutomation/raw/main/AndroidCalculator.apk";
 
     protected static AppiumDriver appDriver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(AppBaseTest.class.getName());
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
+    public static final String PAGE_LOAD_TIME = config.getProperty("PAGE_LOAD_TIME");
+    private static final String APP_ACTIVITY = config.getProperty("APP_ACTIVITY");
+    private static final String APP_PACKAGE_NAME = config.getProperty("APP_PACKAGE_NAME");
+    private static final String AUTOMATION_NAME = config.getProperty("AUTOMATION_NAME");
+    private static final String PLATFORM = config.getProperty("PLATFORM");
+    private static final String APK_LOCATION = config.getProperty("APP");
     private static AppiumDriverLocalService localAppiumServer;
     private static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub/";
     protected Page page;
@@ -33,8 +44,8 @@ public class AppBaseTest extends ApplitoolsInitializer {
     public void SuiteSetup() throws MalformedURLException {
         LOGGER.info("Retrieved config data");
         String dynamicAppiumUrl = startAppiumServer();
-        appDriver = DriverFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE_NAME"),config.getProperty("APP_ACTIVITY"),dynamicAppiumUrl);
-        wait = new WebDriverWait(appDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+        appDriver = DriverFactory.launchMobileApp(PLATFORM, AUTOMATION_NAME, APP_PACKAGE_NAME, APP_ACTIVITY, APK_LOCATION, dynamicAppiumUrl);
+        wait = new WebDriverWait(appDriver, Duration.ofSeconds(Long.parseLong(PAGE_LOAD_TIME)));
         ApplitoolsInitializer.driverSetupForApplitoolsInitializer(appDriver);
         LOGGER.info("Android App Ready");
     }
@@ -46,8 +57,8 @@ public class AppBaseTest extends ApplitoolsInitializer {
 
     @AfterSuite
     public void suiteTearDown() {
-        LOGGER.info("Stopping the local Appium server running on: " +APPIUM_SERVER_URL);
-        if(null != localAppiumServer) {
+        LOGGER.info("Stopping the local Appium server running on: " + APPIUM_SERVER_URL);
+        if (null != localAppiumServer) {
             localAppiumServer.stop();
             LOGGER.info("Is Appium server running? " + localAppiumServer.isRunning());
         }

@@ -30,11 +30,11 @@ public class DriverFactory {
         return driver;
     }
 
-    public static AppiumDriver launchMobileApp(String platformName, String automationName, String appPackage, String appActivity, String appiumServerUrl) throws MalformedURLException {
+    public static AppiumDriver launchMobileApp(String platformName, String automationName, String appPackage, String appActivity, String apkLocation, String appiumServerUrl) throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
-        desiredCapabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk");
+        desiredCapabilities.setCapability(MobileCapabilityType.APP, apkLocation);
         desiredCapabilities.setCapability("appPackage", appPackage);
         desiredCapabilities.setCapability("appActivity", appActivity);
         desiredCapabilities.setCapability("autoGrantPermissions",true);
