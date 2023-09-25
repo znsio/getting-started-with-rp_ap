@@ -1,6 +1,6 @@
 package com.znsio.rpap;
 
-import com.znsio.api.VisualTest;
+import com.znsio.api.ApplitoolsInitializer;
 import com.znsio.rpi.properties.Config;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +9,14 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import com.znsio.rpap.pages.Page;
-import com.znsio.rpap.utils.BrowserFactory;
+import com.znsio.rpap.utils.DriverFactory;
+
 import java.time.Duration;
 import java.util.Properties;
 
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
-public class BaseTest extends VisualTest {
+public class BaseTest extends ApplitoolsInitializer {
     protected static WebDriver webDriver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
@@ -23,24 +24,23 @@ public class BaseTest extends VisualTest {
     protected Page page;
 
     @BeforeSuite
-    public void SuiteSetup() {
-        LOGGER.info("Retrieved config data");
-        webDriver = BrowserFactory.launchApplication(webDriver, config.getProperty(Config.BROWSER),
+    public void suiteSetup() {
+        LOGGER.info("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
+        webDriver = DriverFactory.launchWebApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-        VisualTest.driverSetupForVisualTest(webDriver);
+        ApplitoolsInitializer.driverSetupForApplitoolsInitializer(webDriver);
         LOGGER.info("Browser Ready");
     }
 
     @BeforeMethod
-    public void MethodSetup() {
+    public void methodSetup() {
         page = new Page(webDriver, wait);
     }
 
     @AfterSuite
     public void suiteTearDown() {
         webDriver.quit();
-        LOGGER.info("Report created");
     }
 
     public void log(String message) {

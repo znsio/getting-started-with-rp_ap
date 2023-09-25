@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
+import static com.znsio.rpi.utils.ReportPortalLogger.captureAndAttachScreenshot;
 
 
 public class WebExampleTest extends BaseTest {
@@ -52,7 +52,7 @@ public class WebExampleTest extends BaseTest {
 
     @Step
     private void verifyPageTitle(String title) {
-        captureScreenShot(webDriver, "Validating Title of the Screen");
+        captureAndAttachScreenshot(webDriver, "Validating Title of the Screen");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.pageTitle(), title);
     }
@@ -66,7 +66,7 @@ public class WebExampleTest extends BaseTest {
 
     @Step
     private void verifyMessageAfterLogin(String expectedMessage) {
-        captureScreenShot(webDriver, "Verifying post login message");
+        captureAndAttachScreenshot(webDriver, "Verifying post login message");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(WebPage.getPostSubmitMessage(), expectedMessage);
     }

@@ -20,12 +20,12 @@
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ReportPortalIntegration</artifactId>
-            <version>6ed920eb83</version>
+            <version>bce8cb6271</version>
         </dependency>
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ApplitoolsIntegration</artifactId>
-            <version>7dcd11be1f</version>
+            <version>b70d4eb80c</version>
         </dependency>
         <dependency>
             <groupId>io.appium</groupId>
