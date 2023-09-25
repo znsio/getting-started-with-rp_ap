@@ -56,7 +56,7 @@ public class BasePage extends Page {
         }
     }
 
-    public String GetTitle() {
+    public String getTitle() {
         return driver.getTitle();
     }
 
@@ -65,7 +65,7 @@ public class BasePage extends Page {
         jsDriver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(by));
     }
 
-    public void PageLoadWait(WebDriverWait wait) {
+    public void pageLoadWait(WebDriverWait wait) {
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return ((JavascriptExecutor) driver).executeScript("return document.readyState")
