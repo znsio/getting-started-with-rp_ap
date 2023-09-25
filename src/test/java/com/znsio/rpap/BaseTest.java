@@ -26,17 +26,18 @@ public class BaseTest extends ApplitoolsInitializer {
 
     @BeforeSuite
     public void suiteSetup() {
-        LOGGER.info("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
+        log("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
         webDriver = DriverFactory.launchWebApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
         ApplitoolsInitializer.driverSetupForApplitoolsInitializer(webDriver);
-        LOGGER.info("Browser Ready");
+        log("Browser is ready");
     }
 
     @BeforeMethod
     public void methodSetup() {
         page = new Page(webDriver, wait);
+        log("Page setup is completed");
     }
 
     @AfterSuite

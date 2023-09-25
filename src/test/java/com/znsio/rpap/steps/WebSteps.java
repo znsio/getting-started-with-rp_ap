@@ -1,4 +1,4 @@
-package com.znsio.rpap;
+package com.znsio.rpap.steps;
 
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
@@ -23,21 +23,21 @@ public class WebSteps {
     }
 
     @Step
-    void verifyPageTitle(String title) {
+    public void verifyPageTitle(String title) {
         captureAndAttachScreenshot(webDriver, "Validating Title of the Screen");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(webPage.pageTitle(), title);
     }
 
     @Step
-    void performLogin(String username, String password) throws InterruptedException {
+    public void performLogin(String username, String password) throws InterruptedException {
         log("Entering username and password");
         webPage.login(username, password);
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
     @Step
-    void verifyMessageAfterLogin(String expectedMessage) {
+    public void verifyMessageAfterLogin(String expectedMessage) {
         captureAndAttachScreenshot(webDriver, "Verifying post login message");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(webPage.getPostSubmitMessage(), expectedMessage);
