@@ -20,8 +20,6 @@ public class AppExampleTest extends AppBaseTest {
     @Test(dataProvider = "getFromJson", priority = -2, description = "Perform addition of two no. on calculator",
             groups = {"visual"})
     public void AdditionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        AppPage = page.getClassInstanceApp(AppExample.class);
-        handleCalculatorPopUps();
         performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }
@@ -29,16 +27,15 @@ public class AppExampleTest extends AppBaseTest {
     @Test(dataProvider = "getFromJson", priority = -1, description = "Perform subtraction of two no. on calculator",
             groups = {"visual"})
     public void SubtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        handleCalculatorPopUps();
         performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }
 
-    //   @BeforeMethod
-    @Step
+    @BeforeMethod
     private void handleCalculatorPopUps() {
-        log("Handling calculator popUps");
+        AppPage = page.getClassInstanceApp(AppExample.class);
         AppPage.handlePopupIfPresent();
+        log("Handling calculator popUps");
     }
 
     @Step
