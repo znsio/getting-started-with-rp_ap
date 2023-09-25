@@ -42,14 +42,6 @@ framework
 </proxy>
 ```
 
-## How the Dashboards look
-
-### ReportPortal
-TBA
-
-### Applitools (Visual Testing)
-TBA
-
 ## Execute Tests
 
 ### WebTests
@@ -61,3 +53,22 @@ TBA
 #### [WIP] Android
 
 `mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
+
+## How the Dashboards look
+
+### ReportPortal
+#### Launch Page/Dashboard
+<img width="1728" alt="RP_LaunchPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/fd24cac2-8e90-48ea-b9e0-0db162281e1b">
+
+#### Test Name Page
+<img width="1727" alt="RP_TestNamePage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/ec9d7cf8-c3e5-42e9-aa94-750bf3e1f7a1">
+
+#### Test Execution/Logs Page
+<img width="1728" alt="RP_TestExecutionPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/929abb61-dfc2-4e36-80a2-27c6d596c669">
+
+### Applitools (Visual Testing)
+#### Test Execution/Dashboard
+<img width="1727" alt="AP_TestExecutionPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/7852f86a-d490-4b7b-82ab-f775866d75cf">
+
+#### Batch Details
+<img width="364" alt="AP_BatchPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/0f7fbaba-a50c-4787-954e-bdb7e2116be2">
