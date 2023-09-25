@@ -20,12 +20,12 @@
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ReportPortalIntegration</artifactId>
-            <version>bce8cb6271</version>
+            <version>80156f8b4a</version>
         </dependency>
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ApplitoolsIntegration</artifactId>
-            <version>b70d4eb80c</version>
+            <version>b50a6f4b7d</version>
         </dependency>
     </dependencies>
 
@@ -59,7 +59,7 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>com.znsio.rpi.listener.ReportPortalListener</value>
+                            <value>com.znsio.reportportal.integration.listener.ReportPortalListener</value>
                         </property>
                     </properties>
                 </configuration>
