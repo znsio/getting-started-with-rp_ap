@@ -8,7 +8,7 @@ public class WebExample extends BasePage {
 
     public WebExample(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
-        PageLoadWait(wait);
+        pageLoadWait(wait);
     }
 
     By usernameField = By.id("username");

@@ -5,6 +5,7 @@ import com.znsio.rpi.properties.Config;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -24,8 +25,8 @@ public class BaseTest extends ApplitoolsInitializer {
     protected Page page;
 
     @BeforeSuite
-    public void SuiteSetup() {
-        LOGGER.info("Retrieved config data");
+    public void suiteSetup() {
+        LOGGER.info("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
         webDriver = DriverFactory.launchWebApplication(webDriver, config.getProperty(Config.BROWSER),
                 config.getProperty("URL"));
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
@@ -34,14 +35,13 @@ public class BaseTest extends ApplitoolsInitializer {
     }
 
     @BeforeMethod
-    public void MethodSetup() {
+    public void methodSetup() {
         page = new Page(webDriver, wait);
     }
 
     @AfterSuite
     public void suiteTearDown() {
         webDriver.quit();
-        LOGGER.info("Report created");
     }
 
     public void log(String message) {

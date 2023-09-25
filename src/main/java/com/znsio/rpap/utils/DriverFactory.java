@@ -11,10 +11,8 @@ public class DriverFactory {
     public static WebDriver launchWebApplication(WebDriver driver, String browserName, String appURL) {
 
         if (browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
             driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.chrome.driver", "./drivers/geckodriver");
+        } else if (browserName.equalsIgnoreCase("firefox")) {g
             driver = new FirefoxDriver();
         } else {
             LOGGER.info("Test not support to browser: " + browserName);
