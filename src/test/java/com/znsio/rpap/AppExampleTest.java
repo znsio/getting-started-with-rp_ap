@@ -14,7 +14,6 @@ import static com.znsio.rpi.utils.ReportPortalLogger.captureAndAttachScreenshot;
 public class AppExampleTest extends AppBaseTest {
 
     private AppExample AppPage;
-
     private static final Logger LOGGER = Logger.getLogger(AppExampleTest.class.getName());
 
     @Test(dataProvider = "getFromJson", priority = -2, description = "Perform addition of two no. on calculator",

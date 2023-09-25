@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -22,9 +21,6 @@ import java.util.Properties;
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class AppBaseTest extends ApplitoolsInitializer {
-
-    //   private static final String APK_LOCATION = System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk";
-//    private static final String APK_LOCATION = "https://github.com/anandbagmar/sampleAppsForNativeMobileAutomation/raw/main/AndroidCalculator.apk";
 
     protected static AppiumDriver appDriver;
     private static WebDriverWait wait;
