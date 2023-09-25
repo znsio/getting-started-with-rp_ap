@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import java.lang.reflect.Method;
-import static com.znsio.rpi.utils.ScreenShotManager.captureScreenShot;
+import static com.znsio.rpi.utils.ReportPortalLogger.captureAndAttachScreenshot;
 
 public class AppExampleTest extends AppBaseTest {
 
@@ -44,7 +44,7 @@ public class AppExampleTest extends AppBaseTest {
         String actualOutput = AppPage.getCalculatorDisplay();
         LOGGER.info("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
-        captureScreenShot(appDriver, "Final result captured");
+        captureAndAttachScreenshot(appDriver, "Final result captured");
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
@@ -56,7 +56,7 @@ public class AppExampleTest extends AppBaseTest {
         log("Select Calculator Operation " + operator1);
         AppPage.chooseNumber(input2);
         log("Select No." + input2);
-        captureScreenShot(appDriver, "Data entered on Calculator");
+        captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         LOGGER.info("Select Calculator Operation " + operator2);
         log("Select Calculator Operation " + operator2);

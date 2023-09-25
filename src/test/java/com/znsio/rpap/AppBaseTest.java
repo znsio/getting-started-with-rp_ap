@@ -1,8 +1,8 @@
 package com.znsio.rpap;
 
-import com.znsio.api.VisualTest;
+import com.znsio.api.ApplitoolsInitializer;
 import com.znsio.rpap.pages.Page;
-import com.znsio.rpap.utils.BrowserFactory;
+import com.znsio.rpap.utils.DriverFactory;
 import com.znsio.rpi.properties.Config;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -19,7 +19,7 @@ import java.time.Duration;
 import java.util.Properties;
 import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
-public class AppBaseTest extends VisualTest {
+public class AppBaseTest extends ApplitoolsInitializer {
 
     protected static AppiumDriver appDriver;
     private static WebDriverWait wait;
@@ -33,9 +33,9 @@ public class AppBaseTest extends VisualTest {
     public void SuiteSetup() throws MalformedURLException {
         LOGGER.info("Retrieved config data");
         String dynamicAppiumUrl = startAppiumServer();
-        appDriver = BrowserFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE_NAME"),config.getProperty("APP_ACTIVITY"),dynamicAppiumUrl);
+        appDriver = DriverFactory.launchMobileApp(config.getProperty("PLATFORM"), config.getProperty("AUTOMATION_NAME"), config.getProperty("APP_PACKAGE_NAME"),config.getProperty("APP_ACTIVITY"),dynamicAppiumUrl);
         wait = new WebDriverWait(appDriver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
-        VisualTest.driverSetupForVisualTest(appDriver);
+        ApplitoolsInitializer.driverSetupForApplitoolsInitializer(appDriver);
         LOGGER.info("Android App Ready");
     }
 
