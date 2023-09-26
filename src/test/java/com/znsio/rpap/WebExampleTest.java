@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 
 
+//TODO: Consume BaseTest as a listener instead of an inherited class
 public class WebExampleTest extends BaseTest {
     private WebExample webPage;
     private WebSteps webSteps;

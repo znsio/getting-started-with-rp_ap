@@ -15,6 +15,7 @@ public class BasePage extends Page {
         super(driver, wait);
     }
 
+    //TODO: Simplify this method. Avoid the usage of Nested else-if
     public void inputDataToElement(By by, String dataToInput) {
 
         WebElement ele = driver.findElement(by);
