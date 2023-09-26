@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import java.lang.reflect.Method;
-import static com.znsio.rpi.utils.ReportPortalLogger.captureAndAttachScreenshot;
+import static com.znsio.reportportal.integration.utils.ReportPortalLogger.captureAndAttachScreenshot;
 
 public class AppExampleTest extends AppBaseTest {
 

@@ -1,13 +1,13 @@
 package com.znsio.rpap;
 
-import com.znsio.api.ApplitoolsInitializer;
+import com.znsio.applitools.integration.ApplitoolsInitializer;
 import com.znsio.rpap.pages.Page;
 import com.znsio.rpap.utils.DriverFactory;
-import com.znsio.rpi.properties.Config;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import com.znsio.reportportal.integration.properties.Config;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -17,8 +17,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
+import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
-import static com.znsio.rpi.utils.ReportPortalLogger.logInfoMessage;
 
 public class AppBaseTest extends ApplitoolsInitializer {
 
@@ -31,6 +31,7 @@ public class AppBaseTest extends ApplitoolsInitializer {
     private static final String APP_PACKAGE_NAME = config.getProperty("APP_PACKAGE_NAME");
     private static final String AUTOMATION_NAME = config.getProperty("AUTOMATION_NAME");
     private static final String PLATFORM = config.getProperty("PLATFORM");
+ //   private static final String APK_LOCATION = System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk";
     private static final String APK_LOCATION = config.getProperty("APP");
     private static AppiumDriverLocalService localAppiumServer;
     private static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub/";
