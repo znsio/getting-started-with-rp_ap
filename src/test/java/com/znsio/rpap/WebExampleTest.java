@@ -1,44 +1,48 @@
 package com.znsio.rpap;
 
-import com.applitools.eyes.selenium.fluent.Target;
-import com.epam.reportportal.annotations.Step;
 import com.znsio.rpap.pages.WebExample;
+import com.znsio.rpap.steps.WebSteps;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
-import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-import static com.znsio.rpi.utils.ReportPortalLogger.captureAndAttachScreenshot;
-
 
 public class WebExampleTest extends BaseTest {
-    private WebExample WebPage;
+    private WebExample webPage;
+    private WebSteps webSteps;
+
+    @BeforeMethod
+    public void webPageSetup() {
+
+        log("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
+        webPage = page.getClassInstance(WebExample.class);
+        webSteps = new WebSteps(webDriver, webPage, eyesOnWeb);
+    }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
             groups = {"visual"})
     public void titleTest(String title) {
-
-        WebPage = page.getClassInstance(WebExample.class);
-        verifyPageTitle(title);
+        webSteps.verifyPageTitle(title);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password",
             groups = {"visual"})
     public void validLoginTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        performLogin(username, password);
-        verifyMessageAfterLogin(expectedMessage);
+        webSteps.performLogin(username, password);
+        webSteps.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password",
             groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        performLogin(username, password);
-        verifyMessageAfterLogin(expectedMessage);
+        webSteps.performLogin(username, password);
+        webSteps.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
@@ -46,29 +50,8 @@ public class WebExampleTest extends BaseTest {
     public void invalidPasswordTest(String username, String password, String expectedMessage)
             throws InterruptedException {
 
-        performLogin(username, password);
-        verifyMessageAfterLogin(expectedMessage);
-    }
-
-    @Step
-    private void verifyPageTitle(String title) {
-        captureAndAttachScreenshot(webDriver, "Validating Title of the Screen");
-        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-        Assert.assertEquals(WebPage.pageTitle(), title);
-    }
-
-    @Step
-    private void performLogin(String username, String password) throws InterruptedException {
-        log("Entering username and password");
-        WebPage.login(username, password);
-        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-    }
-
-    @Step
-    private void verifyMessageAfterLogin(String expectedMessage) {
-        captureAndAttachScreenshot(webDriver, "Verifying post login message");
-        eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-        Assert.assertEquals(WebPage.getPostSubmitMessage(), expectedMessage);
+        webSteps.performLogin(username, password);
+        webSteps.verifyMessageAfterLogin(expectedMessage);
     }
 
     @DataProvider(name = "getFromJson")

@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 import com.google.gson.Gson;
-import com.znsio.rpi.properties.Config;
+import com.znsio.reportportal.integration.properties.Config;
 
 public class JsonDataProvider {
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
