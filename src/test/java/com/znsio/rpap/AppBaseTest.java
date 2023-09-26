@@ -31,7 +31,6 @@ public class AppBaseTest extends ApplitoolsInitializer {
     private static final String APP_PACKAGE_NAME = config.getProperty("APP_PACKAGE_NAME");
     private static final String AUTOMATION_NAME = config.getProperty("AUTOMATION_NAME");
     private static final String PLATFORM = config.getProperty("PLATFORM");
-//    private static final String APK_LOCATION = System.getProperty("user.dir") + "/drivers/AndroidCalculator.apk";
     private static final String APK_LOCATION = config.getProperty("APP");
     private static AppiumDriverLocalService localAppiumServer;
     private static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub/";
