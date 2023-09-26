@@ -1,7 +1,7 @@
 package com.znsio.rpap.steps;
 
+import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
-import com.applitools.eyes.selenium.Eyes;
 import com.epam.reportportal.annotations.Step;
 import com.znsio.rpap.pages.AppExample;
 import io.appium.java_client.AppiumDriver;
@@ -33,7 +33,7 @@ public class AppSteps {
         appPage.chooseNumber(input2);
         log("Select No." + input2);
         captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
-   //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+        eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         log("Select Calculator Operation " + operator2);
         appPage.chooseOperation(operator2);
     }
@@ -45,7 +45,7 @@ public class AppSteps {
         log("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
         captureAndAttachScreenshot(appDriver, "Final result captured");
-   //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
+        eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
 
 

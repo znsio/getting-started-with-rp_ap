@@ -23,7 +23,7 @@ public class AppExampleTest extends AppBaseTest {
         appPage = page.getClassInstanceApp(AppExample.class);
         appPage.handlePopupIfPresent();
         log("Handling calculator popUps");
-        appSteps = new AppSteps(appDriver, appPage, eyesOnWeb);
+        appSteps = new AppSteps(appDriver, appPage, eyesOnApp);
     }
 
     @Test(dataProvider = "getFromJson", priority = -3, description = "Perform addition of two no. on calculator",
