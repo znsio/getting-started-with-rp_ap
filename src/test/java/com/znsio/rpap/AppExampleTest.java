@@ -16,16 +16,30 @@ public class AppExampleTest extends AppBaseTest {
     private AppExample AppPage;
     private static final Logger LOGGER = Logger.getLogger(AppExampleTest.class.getName());
 
-    @Test(dataProvider = "getFromJson", priority = -2, description = "Perform addition of two no. on calculator",
+    @Test(dataProvider = "getFromJson", priority = -3, description = "Perform addition of two no. on calculator",
             groups = {"visual"})
     public void AdditionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }
 
-    @Test(dataProvider = "getFromJson", priority = -1, description = "Perform subtraction of two no. on calculator",
+    @Test(dataProvider = "getFromJson", priority = -2, description = "Perform subtraction of two no. on calculator",
             groups = {"visual"})
     public void SubtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+        performOperation(input1, operator1, input2, operator2);
+        verifyResult(expectedMsg);
+    }
+
+    @Test(dataProvider = "getFromJson", priority = -1, description = "Perform multiplication of two no. on calculator",
+            groups = {"visual"})
+    public void MultiplicationTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+        performOperation(input1, operator1, input2, operator2);
+        verifyResult(expectedMsg);
+    }
+
+    @Test(dataProvider = "getFromJson", description = "Perform divison of two no. on calculator",
+            groups = {"visual"})
+    public void DivisonTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         performOperation(input1, operator1, input2, operator2);
         verifyResult(expectedMsg);
     }

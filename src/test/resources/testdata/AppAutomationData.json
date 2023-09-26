@@ -20,6 +20,24 @@
           "equals"
         ],
         "expected": "2"
+      },
+      "MultiplicationTest": {
+        "value": [
+          "2",
+          "multiply",
+          "3",
+          "equals"
+        ],
+        "expected": "6"
+      },
+      "DivisonTest": {
+        "value": [
+          "9",
+          "divide",
+          "3",
+          "equals"
+        ],
+        "expected": "3"
       }
     }
   }

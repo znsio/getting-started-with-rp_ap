@@ -19,8 +19,8 @@ public class AppExample extends BasePage {
     static {
         OPERATION_MAP.put("plus", "plus");
         OPERATION_MAP.put("subtract", "minus");
-        OPERATION_MAP.put("multiply", "times");
-        OPERATION_MAP.put("divide", "divide");
+        OPERATION_MAP.put("multiply", "mul");
+        OPERATION_MAP.put("divide", "div");
         OPERATION_MAP.put("equals", "equal");
     }
 
