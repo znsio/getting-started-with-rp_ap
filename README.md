@@ -46,12 +46,12 @@ framework
 
 ### WebTests
 
-`mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
+`mvn clean test -DsuiteXmlFile=TestNG/webTestng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
 
 ### AppTests
 
 #### [WIP] Android
-`mvn clean test -DsuiteXmlFile=testng2.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
+`mvn clean test -DsuiteXmlFile=TestNG/androidTestng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
 
 ## How the Dashboards look
 
