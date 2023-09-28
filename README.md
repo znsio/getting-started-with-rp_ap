@@ -21,7 +21,7 @@ framework
 * [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md)
 * [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md)
 
-## Pre-requisite for Android 
+## Pre-requisite for Apps 
 **Steps To Install Appium npm and Node.js** 
 
 1. Before installing the Appium we need to install the Node.js and npm
@@ -57,15 +57,10 @@ framework
 
 6. Install the necessary drivers:
 
-   **appium driver install uiautomator2**
 
-   **appium driver install espresso**
+    For Android: appium driver install uiautomator2
+    For IOS: appium driver install xcuitest
 
-   **appium driver install xcuitest**
-
-   **appium driver install mac2**
-
-   **appium driver install safari**
 
 ## Build
 
