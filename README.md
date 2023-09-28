@@ -21,6 +21,52 @@ framework
 * [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md)
 * [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md)
 
+## Pre-requisite for Android 
+**Steps To Install Appium npm and Node.js** 
+
+1. Before installing the Appium we need to install the Node.js and npm
+
+2. Navigate to the node.js site: Go to the official Node.js website: https://nodejs.org/
+
+3. Download the installer: On the Node.js homepage, you'll see two versions available for download: LTS (Long Term Support) and Current. It's recommended to download the LTS version for a stable environment.
+
+4. Run the installer: Double-click the downloaded installer to run it.
+
+5. Follow the installation process: The Node.js installer will guide you through the installation process. Accept the license agreement, choose the installation location (or keep the default), and make sure to check the box that says "Automatically install the npm package manager."
+
+6. Complete the installation: Click "Next" and then "Install" to complete the installation. Node.js and npm will be installed on your system.
+
+7. Verify the installation: Open a command prompt (search for "Command Prompt" or "cmd" in the start menu), and type the following commands to verify the installation:
+
+   **node -v**
+
+   **npm -v**
+
+
+**How to Install Appium**
+
+1. Now we have installed npm -v: 10.1.0 & node -v: 20.7.0
+
+2. Install Appium globally: npm install -g appium
+
+3. The -g flag installs Appium globally, making it accessible from any directory.
+
+4. Check the installation: appium --version : 2.1.3
+
+5. Now we need to use appium drivers to automate Android and IOS apps: Execute the command to see all available driver list: appium driver list
+
+6. Install the necessary drivers:
+
+   **appium driver install uiautomator2**
+
+   **appium driver install espresso**
+
+   **appium driver install xcuitest**
+
+   **appium driver install mac2**
+
+   **appium driver install safari**
+
 ## Build
 
 `mvn clean install -DskipTests`
