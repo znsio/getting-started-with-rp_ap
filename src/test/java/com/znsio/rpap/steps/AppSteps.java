@@ -14,6 +14,7 @@ import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInf
 public class AppSteps {
 
     private static final Logger LOGGER = Logger.getLogger(AppSteps.class.getName());
+    private static final String EQUAL_OPERATOR = "equals";
     private AppiumDriver appDriver;
     private AppExample appPage;
     private Eyes eyesOnApp;
@@ -25,17 +26,17 @@ public class AppSteps {
     }
 
     @Step
-    public void performOperation(String input1, String operator1, String input2, String operator2) {
-        appPage.chooseNumber(input1);
-        log("Selected No." + input1);
+    public void performOperation(String operand1, String operator1, String operand2) {
+        appPage.chooseNumber(operand1);
+        log("Selected No." + operand1);
         appPage.chooseOperation(operator1);
         log("Select Calculator Operation " + operator1);
-        appPage.chooseNumber(input2);
-        log("Select No." + input2);
+        appPage.chooseNumber(operand2);
+        log("Select No." + operand2);
         captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
-        log("Select Calculator Operation " + operator2);
-        appPage.chooseOperation(operator2);
+        log("Select Calculator Operation " + EQUAL_OPERATOR);
+        appPage.chooseOperation(EQUAL_OPERATOR);
     }
 
     @Step

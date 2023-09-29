@@ -26,31 +26,31 @@ public class AppExampleTest extends AppBaseTest {
         appSteps = new AppSteps(appDriver, appPage, eyesOnApp);
     }
 
-    @Test(dataProvider = "getFromJson", priority = -3, description = "Perform addition of two no. on calculator",
+    @Test(dataProvider = "getFromJson", description = "Perform addition of two no. on calculator",
             groups = {"visual"})
-    public void additionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        appSteps.performOperation(input1, operator1, input2, operator2);
+    public void additionTest(String operand1, String operator1, String operand2, String expectedMsg) {
+        appSteps.performOperation(operand1, operator1, operand2);
         appSteps.verifyResult(expectedMsg);
     }
 
-    @Test(dataProvider = "getFromJson", priority = -2, description = "Perform subtraction of two no. on calculator",
+    @Test(dataProvider = "getFromJson", description = "Perform subtraction of two no. on calculator",
             groups = {"visual"})
-    public void subtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        appSteps.performOperation(input1, operator1, input2, operator2);
+    public void subtractionTest(String operand1, String operator1, String operand2, String expectedMsg) {
+        appSteps.performOperation(operand1, operator1, operand2);
         appSteps.verifyResult(expectedMsg);
     }
 
-    @Test(dataProvider = "getFromJson", priority = -1, description = "Perform multiplication of two no. on calculator",
+    @Test(dataProvider = "getFromJson", description = "Perform multiplication of two no. on calculator",
             groups = {"visual"})
-    public void multiplicationTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        appSteps.performOperation(input1, operator1, input2, operator2);
+    public void multiplicationTest(String operand1, String operator1, String operand2, String expectedMsg) {
+        appSteps.performOperation(operand1, operator1, operand2);
         appSteps.verifyResult(expectedMsg);
     }
 
     @Test(dataProvider = "getFromJson", description = "Perform divison of two no. on calculator",
             groups = {"visual"})
-    public void divisonTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
-        appSteps.performOperation(input1, operator1, input2, operator2);
+    public void divisonTest(String operand1, String operator1, String operand2, String expectedMsg) {
+        appSteps.performOperation(operand1, operator1, operand2);
         appSteps.verifyResult(expectedMsg);
     }
 

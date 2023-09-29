@@ -7,8 +7,7 @@
         "value": [
           "2",
           "plus",
-          "5",
-          "equals"
+          "5"
         ],
         "expected": "7"
       },
@@ -16,8 +15,7 @@
         "value": [
           "8",
           "subtract",
-          "6",
-          "equals"
+          "6"
         ],
         "expected": "2"
       },
@@ -25,8 +23,7 @@
         "value": [
           "2",
           "multiply",
-          "3",
-          "equals"
+          "3"
         ],
         "expected": "6"
       },
@@ -34,8 +31,7 @@
         "value": [
           "9",
           "divide",
-          "3",
-          "equals"
+          "3"
         ],
         "expected": "3"
       }
