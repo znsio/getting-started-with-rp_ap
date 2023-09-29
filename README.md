@@ -58,10 +58,11 @@ framework
 6. Install the necessary drivers:
 
 **For Android:**  
-`appium driver install uiautomator2`
+* appium driver install uiautomator2
 
 **For IOS:**  
-`appium driver install xcuitest`
+* appium driver install xcuitest
+
     
 
 
