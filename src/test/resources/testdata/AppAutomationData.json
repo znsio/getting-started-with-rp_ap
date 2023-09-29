@@ -3,7 +3,7 @@
   "description": "Data for App Automation Tests",
   "data": {
     "AppExampleTest": {
-      "AdditionTest": {
+      "additionTest": {
         "value": [
           "2",
           "plus",
@@ -12,7 +12,7 @@
         ],
         "expected": "7"
       },
-      "SubtractionTest": {
+      "subtractionTest": {
         "value": [
           "8",
           "subtract",
@@ -21,7 +21,7 @@
         ],
         "expected": "2"
       },
-      "MultiplicationTest": {
+      "multiplicationTest": {
         "value": [
           "2",
           "multiply",
@@ -30,7 +30,7 @@
         ],
         "expected": "6"
       },
-      "DivisonTest": {
+      "divisonTest": {
         "value": [
           "9",
           "divide",
