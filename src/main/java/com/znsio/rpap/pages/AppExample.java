@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class AppExample extends BasePage {
 
-    public static final By ByCalculatorScreenXpath = By.xpath("//android.widget.EditText");
+    private static final By ByCalculatorScreenXpath = By.xpath("//android.widget.EditText");
     private static final By ByCheckForUpdateId = By.id("android:id/button1");
-    public static final By ByWelcomeMsgId = By.id("com.android2.calculator3:id/cling_dismiss");
+    private static final By ByWelcomeMsgId = By.id("com.android2.calculator3:id/cling_dismiss");
     private static final Logger LOGGER = Logger.getLogger(AppExample.class.getName());
     private static final Map<String, String> OPERATION_MAP = new HashMap<>();
 

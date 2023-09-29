@@ -21,7 +21,7 @@ framework
 * [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md)
 * [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md)
 
-## Pre-requisite for Apps 
+## Pre-requisites for executing App Tests 
 **Steps To Install Appium npm and Node.js** 
 
 1. Before installing the Appium we need to install the Node.js and npm
@@ -38,9 +38,9 @@ framework
 
 7. Verify the installation: Open a command prompt (search for "Command Prompt" or "cmd" in the start menu), and type the following commands to verify the installation:
 
-   **node -v**
+    `node -v`   
+    `npm -v`   
 
-   **npm -v**
 
 
 **How to Install Appium**
@@ -57,9 +57,12 @@ framework
 
 6. Install the necessary drivers:
 
+**For Android:**  
+`appium driver install uiautomator2`
 
-    For Android: appium driver install uiautomator2
-    For IOS: appium driver install xcuitest
+**For IOS:**  
+`appium driver install xcuitest`
+    
 
 
 ## Build
@@ -91,7 +94,7 @@ framework
 
 ### AppTests
 
-#### [WIP] Android
+#### Android
 `mvn clean test -DsuiteXmlFile=TestNG/androidTestng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
 
 ## How the Dashboards look

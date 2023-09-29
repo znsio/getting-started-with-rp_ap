@@ -28,28 +28,28 @@ public class AppExampleTest extends AppBaseTest {
 
     @Test(dataProvider = "getFromJson", priority = -3, description = "Perform addition of two no. on calculator",
             groups = {"visual"})
-    public void AdditionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+    public void additionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         appSteps.performOperation(input1, operator1, input2, operator2);
         appSteps.verifyResult(expectedMsg);
     }
 
     @Test(dataProvider = "getFromJson", priority = -2, description = "Perform subtraction of two no. on calculator",
             groups = {"visual"})
-    public void SubtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+    public void subtractionTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         appSteps.performOperation(input1, operator1, input2, operator2);
         appSteps.verifyResult(expectedMsg);
     }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Perform multiplication of two no. on calculator",
             groups = {"visual"})
-    public void MultiplicationTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+    public void multiplicationTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         appSteps.performOperation(input1, operator1, input2, operator2);
         appSteps.verifyResult(expectedMsg);
     }
 
     @Test(dataProvider = "getFromJson", description = "Perform divison of two no. on calculator",
             groups = {"visual"})
-    public void DivisonTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
+    public void divisonTest(String input1, String operator1, String input2, String operator2, String expectedMsg) {
         appSteps.performOperation(input1, operator1, input2, operator2);
         appSteps.verifyResult(expectedMsg);
     }
