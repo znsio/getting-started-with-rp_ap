@@ -20,7 +20,7 @@ public class AppExampleTest extends AppBaseTest {
     @BeforeMethod
     private void handleCalculatorPopUps() {
         log("Inside @BeforeMethod of " + AppExampleTest.class.getSimpleName());
-        appPage = page.getClassInstanceApp(AppExample.class);
+        appPage = page.getClassInstance(AppExample.class);
         appPage.handlePopupIfPresent();
         log("Handling calculator popUps");
         appSteps = new AppSteps(appDriver, appPage, eyesOnApp);

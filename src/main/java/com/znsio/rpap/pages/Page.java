@@ -23,14 +23,4 @@ public class Page {
             return null;
         }
     }
-
-    public <T extends BasePage> T getClassInstanceApp(Class<T> pageclass) {
-        try {
-            return pageclass.getDeclaredConstructor(AppiumDriver.class, WebDriverWait.class)
-                    .newInstance(this.driver, this.wait);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }
