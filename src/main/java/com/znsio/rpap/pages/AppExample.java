@@ -58,11 +58,10 @@ public class AppExample extends BasePage {
     }
 
     public void chooseOperation(String operation) {
-        String mappedOperation = OPERATION_MAP.get(operation.toLowerCase());
-        if (mappedOperation == null) {
+        if (operation == null) {
             throw new RuntimeException("Operation " + operation + " is not supported");
         }
-        driver.findElement(By.id(mappedOperation)).click();
+        driver.findElement(By.id(operation)).click();
     }
 
     public String getCalculatorDisplay() {

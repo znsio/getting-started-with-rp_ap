@@ -14,7 +14,7 @@
       "subtractionTest": {
         "value": [
           "8",
-          "subtract",
+          "minus",
           "6"
         ],
         "expected": "2"
@@ -22,7 +22,7 @@
       "multiplicationTest": {
         "value": [
           "2",
-          "multiply",
+          "mul",
           "3"
         ],
         "expected": "6"
@@ -30,7 +30,7 @@
       "divisonTest": {
         "value": [
           "9",
-          "divide",
+          "div",
           "3"
         ],
         "expected": "3"
