@@ -6,6 +6,7 @@ import com.epam.reportportal.annotations.Step;
 import com.znsio.rpap.pages.AppExample;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.captureAndAttachScreenshot;
@@ -30,13 +31,13 @@ public class AppSteps {
     public void performOperation(String operand1, String operator, String operand2) {
         appPage.chooseNumber(operand1);
         log("Selected No." + operand1);
-   //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.region(By.id("digit" + operand1)));
+        eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),Target.region(By.id("digit"+operand1)));
         appPage.chooseOperation(operator);
         log("Select Calculator Operation " + operator);
-   //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.region(By.id(operator)));
+  //      eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),Target.window());
         appPage.chooseNumber(operand2);
         log("Select No." + operand2);
-   //     eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.region(By.id("digit" + operand2)));
+        eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),Target.region(By.id("digit"+operand2)));
         captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
         log("Select Calculator Operation " + EQUAL_OPERATOR);
         appPage.chooseOperation(EQUAL_OPERATOR);
