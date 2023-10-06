@@ -55,4 +55,8 @@ public class AppExample extends BasePage {
     public String getCalculatorDisplay() {
         return driver.findElement(ByCalculatorScreenXpath).getText().trim();
     }
+
+    public void clearAppData() {
+        driver.findElement(By.id("clear")).click();
+    }
 }
