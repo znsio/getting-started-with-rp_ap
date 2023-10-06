@@ -26,6 +26,7 @@ public class AppExampleTest extends BaseTest {
         appSteps = new AppSteps((AppiumDriver) driver, appPage, eyesOnApp);
         log("Handling if any popUps are shown in the app");
         appPage.handlePopupIfPresent();
+        appPage.clearScreen();
     }
 
     @Test(dataProvider = "getFromJson", description = "Perform addition of two no. on calculator",

@@ -11,6 +11,8 @@ public class AppExample extends BasePage {
     private static final By ByCheckForUpdateId = By.id("android:id/button1");
     private static final By ByWelcomeMsgId = By.id("com.android2.calculator3:id/cling_dismiss");
     private static final Logger LOGGER = Logger.getLogger(AppExample.class.getName());
+    private static final By ByDeleteBtnId = By.id("del");
+    private static final By ByClearBtnId = By.id("clear");
 
     public AppExample(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -56,7 +58,14 @@ public class AppExample extends BasePage {
         return driver.findElement(ByCalculatorScreenXpath).getText().trim();
     }
 
-    public void clearAppData() {
-        driver.findElement(By.id("clear")).click();
+    public void clearScreen() {
+        boolean isDeleteButtonPresent = isElementPresent(ByDeleteBtnId);
+        if (isDeleteButtonPresent) {
+            driver.findElement(ByDeleteBtnId).click();
+        }
+        boolean isClearButtonPreset = isElementPresent(ByClearBtnId);
+        if (isClearButtonPreset) {
+            driver.findElement(ByClearBtnId).click();
+        }
     }
 }

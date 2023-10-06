@@ -52,7 +52,6 @@ public class AppSteps {
         log("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
         captureAndAttachScreenshot(appDriver, "Final result captured");
-        appPage.clearAppData();
     }
 
     private static void log(String message) {
