@@ -23,14 +23,13 @@ public class BaseTest extends ApplitoolsInitializer {
     protected static WebDriver driver;
     private static WebDriverWait wait;
     private static final Logger LOGGER = Logger.getLogger(BaseTest.class.getName());
-    private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
     protected Page page;
 
     @BeforeSuite
     public void suiteSetup() throws MalformedURLException {
         log("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
         driver = DriverFactory.getDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
+        wait = DriverFactory.getWait(driver);
         if (DriverFactory.getPlatform().equals(WEB)) {
             ApplitoolsInitializer.driverSetupForApplitoolsInitializer(driver);
         } else {

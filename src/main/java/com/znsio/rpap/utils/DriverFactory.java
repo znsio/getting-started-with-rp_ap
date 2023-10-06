@@ -13,10 +13,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Properties;
 
 import static com.znsio.reportportal.integration.utils.OverriddenVariable.getOverriddenStringValue;
@@ -38,6 +40,10 @@ public class DriverFactory {
         } else {
             return getAppDriver();
         }
+    }
+
+    public static WebDriverWait getWait(WebDriver driver) {
+        return new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(config.getProperty("PAGE_LOAD_TIME"))));
     }
 
     public static AppiumDriver getAppDriver() throws MalformedURLException {
