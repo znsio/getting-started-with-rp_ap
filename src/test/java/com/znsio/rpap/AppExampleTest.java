@@ -5,13 +5,15 @@ import com.znsio.rpap.pages.AppExample;
 import com.znsio.rpap.steps.AppSteps;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
+import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
 
-public class AppExampleTest extends AppBaseTest {
+
+public class AppExampleTest extends BaseTest {
 
     private AppExample appPage;
     private AppSteps appSteps;
@@ -21,9 +23,9 @@ public class AppExampleTest extends AppBaseTest {
     private void handleCalculatorPopUps() {
         log("Inside @BeforeMethod of " + AppExampleTest.class.getSimpleName());
         appPage = page.getClassInstance(AppExample.class);
+        appSteps = new AppSteps((AppiumDriver) driver, appPage, eyesOnApp);
+        log("Handling if any popUps are shown in the app");
         appPage.handlePopupIfPresent();
-        log("Handling calculator popUps");
-        appSteps = new AppSteps(appDriver, appPage, eyesOnApp);
     }
 
     @Test(dataProvider = "getFromJson", description = "Perform addition of two no. on calculator",

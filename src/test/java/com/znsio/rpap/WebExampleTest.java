@@ -21,7 +21,7 @@ public class WebExampleTest extends BaseTest {
 
         log("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
         webPage = page.getClassInstance(WebExample.class);
-        webSteps = new WebSteps(webDriver, webPage, eyesOnWeb);
+        webSteps = new WebSteps(driver, webPage, eyesOnWeb);
     }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
