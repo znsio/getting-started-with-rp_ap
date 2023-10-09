@@ -1,15 +1,10 @@
 package com.znsio.rpap;
 
-
 import com.znsio.rpap.pages.AppExample;
 import com.znsio.rpap.steps.AppSteps;
-import com.znsio.rpap.utils.JsonDataManager;
-import com.znsio.rpap.utils.JsonDataProvider;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
-
-import java.lang.reflect.Method;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
@@ -30,39 +25,27 @@ public class AppExampleTest extends BaseTest {
         appPage.clearScreen();
     }
 
-    @Test(dataProvider = "getFromJson", description = "Perform addition of two no. on calculator",
-            groups = {"visual"})
-    public void additionTest(String operand1, String operator1, String operand2, String expectedMsg) {
-        appSteps.performOperation(operand1, operator1, operand2);
-        appSteps.verifyResult(expectedMsg);
+    @Test(description = "Perform addition of two no. on calculator", groups = {"visual"})
+    public void additionTest() {
+        appSteps.performOperation("2", "plus", "5");
+        appSteps.verifyResult("7");
     }
 
-    @Test(dataProvider = "getFromJson", description = "Perform subtraction of two no. on calculator",
-            groups = {"visual"})
-    public void subtractionTest(String operand1, String operator1, String operand2, String expectedMsg) {
-        appSteps.performOperation(operand1, operator1, operand2);
-        appSteps.verifyResult(expectedMsg);
+    @Test(description = "Perform subtraction of two no. on calculator", groups = {"visual"})
+    public void subtractionTest() {
+        appSteps.performOperation("8", "minus", "6");
+        appSteps.verifyResult("2");
     }
 
-    @Test(dataProvider = "getFromJson", description = "Perform multiplication of two no. on calculator",
-            groups = {"visual"})
-    public void multiplicationTest(String operand1, String operator1, String operand2, String expectedMsg) {
-        appSteps.performOperation(operand1, operator1, operand2);
-        appSteps.verifyResult(expectedMsg);
+    @Test(description = "Perform multiplication of two no. on calculator", groups = {"visual"})
+    public void multiplicationTest() {
+        appSteps.performOperation("2", "mul", "3");
+        appSteps.verifyResult("6");
     }
 
-    @Test(dataProvider = "getFromJson", description = "Perform divison of two no. on calculator",
-            groups = {"visual"})
-    public void divisonTest(String operand1, String operator1, String operand2, String expectedMsg) {
-        appSteps.performOperation(operand1, operator1, operand2);
-        appSteps.verifyResult(expectedMsg);
-    }
-
-
-    @DataProvider(name = "getFromJson")
-    public Object[][] getFromJson(Method mtd) throws Exception {
-        JsonDataManager jdm = JsonDataProvider.loadData();
-        Object[][] dataMap = jdm.getData(getClass(), mtd.getName());
-        return dataMap;
+    @Test(description = "Perform divison of two no. on calculator", groups = {"visual"})
+    public void divisonTest() {
+        appSteps.performOperation("9", "div", "3");
+        appSteps.verifyResult("3");
     }
 }
