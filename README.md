@@ -16,10 +16,10 @@ framework
 * [Applitools](https://applitools.com)
 * Build tool: [Maven](https://maven.apache.org/)
 
-## Documentation for integration with ReportPortal and Applitools
+## Configuring ReportPortal and Applitools
 
-* [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md)
-* [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md)
+* [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md#how-to-configure-reportportal-in-your-automation-framework)
+* [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md#how-to-configure-applitools-visual-testing-in-your-automation-framework)
 
 ## Pre-requisites for executing App Tests
 
