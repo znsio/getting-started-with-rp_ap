@@ -1,7 +1,7 @@
 package com.znsio.rpap;
 
 import com.znsio.rpap.pages.WebExample;
-import com.znsio.rpap.steps.WebSteps;
+import com.znsio.rpap.businessLayer.WebBL;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
 import org.testng.annotations.BeforeMethod;
@@ -16,36 +16,36 @@ import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInf
 //TODO: Consume BaseTest as a listener instead of an inherited class
 public class WebExampleTest extends BaseTest {
     private WebExample webPage;
-    private WebSteps webSteps;
+    private WebBL webBL;
 
     @BeforeMethod
     public void webPageSetup() {
 
         logInfoMessage("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
         webPage = page.getClassInstance(WebExample.class);
-        webSteps = new WebSteps(driver, webPage, eyesOnWeb);
+        webBL = new WebBL(driver, webPage, eyesOnWeb);
     }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
             groups = {"visual"})
     public void titleTest(String title) {
-        webSteps.verifyPageTitle(title);
+        webBL.verifyPageTitle(title);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password",
             groups = {"visual"})
     public void validLoginTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        webSteps.performLogin(username, password);
-        webSteps.verifyMessageAfterLogin(expectedMessage);
+        webBL.performLogin(username, password);
+        webBL.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password",
             groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        webSteps.performLogin(username, password);
-        webSteps.verifyMessageAfterLogin(expectedMessage);
+        webBL.performLogin(username, password);
+        webBL.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
@@ -53,8 +53,8 @@ public class WebExampleTest extends BaseTest {
     public void invalidPasswordTest(String username, String password, String expectedMessage)
             throws InterruptedException {
 
-        webSteps.performLogin(username, password);
-        webSteps.verifyMessageAfterLogin(expectedMessage);
+        webBL.performLogin(username, password);
+        webBL.verifyMessageAfterLogin(expectedMessage);
     }
 
     @DataProvider(name = "getFromJson")

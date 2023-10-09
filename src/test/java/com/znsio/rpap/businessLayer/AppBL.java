@@ -1,4 +1,4 @@
-package com.znsio.rpap.steps;
+package com.znsio.rpap.businessLayer;
 
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
@@ -12,16 +12,16 @@ import org.testng.Assert;
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.captureAndAttachScreenshot;
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
-public class AppSteps {
+public class AppBL {
 
-    private static final Logger LOGGER = Logger.getLogger(AppSteps.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AppBL.class.getName());
     private static final String EQUAL_OPERATOR = "equal";
 
     private AppiumDriver appDriver;
     private AppExample appPage;
     private Eyes eyesOnApp;
 
-    public AppSteps(AppiumDriver appDriver, AppExample appPage, Eyes eyesOnApp) {
+    public AppBL(AppiumDriver appDriver, AppExample appPage, Eyes eyesOnApp) {
         this.appDriver = appDriver;
         this.appPage = appPage;
         this.eyesOnApp = eyesOnApp;
