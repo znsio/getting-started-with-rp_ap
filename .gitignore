@@ -6,6 +6,7 @@
 .DS_Store
 TestReport/
 logs/
+node_modules/
 
 # Log file
 *.log
