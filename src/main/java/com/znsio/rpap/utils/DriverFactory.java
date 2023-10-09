@@ -30,7 +30,7 @@ public class DriverFactory {
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
     private static WebDriver webDriver;
     private static AppiumDriverLocalService localAppiumServer;
-    private static String APPIUM_SERVER_URL = "http://localhost:4723/wd/hub/";
+    private static String APPIUM_SERVER_URL;
 
 
     public static WebDriver getDriver() throws MalformedURLException {

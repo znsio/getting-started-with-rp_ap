@@ -3,6 +3,7 @@ package com.znsio.rpap.pages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AppExample extends BasePage {
@@ -22,25 +23,17 @@ public class AppExample extends BasePage {
         boolean isUpgradeAppNotificationElement = isElementPresent(ByCheckForUpdateId);
         if (isUpgradeAppNotificationElement) {
             driver.findElement(ByCheckForUpdateId).click();
-            waitFor(1);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ByWelcomeMsgId));
         }
         boolean isClingElementPresent = isElementPresent(ByWelcomeMsgId);
         if (isClingElementPresent) {
             driver.findElement(ByWelcomeMsgId).click();
-            waitFor(1);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ByDeleteBtnId));
         }
     }
 
     public boolean isElementPresent(By locator) {
         return !driver.findElements(locator).isEmpty();
-    }
-
-    public synchronized static void waitFor(int seconds) {
-        LOGGER.info("Wait for " + seconds + " seconds");
-        try {
-            Thread.sleep(seconds * 1000L);
-        } catch (InterruptedException e) {
-        }
     }
 
     public void chooseNumber(String number) {
