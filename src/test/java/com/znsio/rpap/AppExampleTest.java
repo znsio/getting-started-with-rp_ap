@@ -11,6 +11,7 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
+import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
 
 public class AppExampleTest extends BaseTest {
@@ -21,10 +22,10 @@ public class AppExampleTest extends BaseTest {
 
     @BeforeMethod
     private void handleCalculatorPopUps() {
-        log("Inside @BeforeMethod of " + AppExampleTest.class.getSimpleName());
+        logInfoMessage("Inside @BeforeMethod of " + AppExampleTest.class.getSimpleName());
         appPage = page.getClassInstance(AppExample.class);
         appSteps = new AppSteps((AppiumDriver) driver, appPage, eyesOnApp);
-        log("Handling if any popUps are shown in the app");
+        logInfoMessage("Handling if any popUps are shown in the app");
         appPage.handlePopupIfPresent();
         appPage.clearScreen();
     }

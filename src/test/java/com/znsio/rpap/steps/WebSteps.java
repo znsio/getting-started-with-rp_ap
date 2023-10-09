@@ -31,7 +31,7 @@ public class WebSteps {
 
     @Step
     public void performLogin(String username, String password) throws InterruptedException {
-        log("Entering username and password");
+        logInfoMessage("Entering username and password");
         webPage.login(username, password);
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
@@ -41,10 +41,5 @@ public class WebSteps {
         captureAndAttachScreenshot(webDriver, "Verifying post login message");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(webPage.getPostSubmitMessage(), expectedMessage);
-    }
-
-    private static void log(String message) {
-        LOGGER.info(message);
-        logInfoMessage(message);
     }
 }

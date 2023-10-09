@@ -1,7 +1,6 @@
 package com.znsio.rpap;
 
 import com.znsio.applitools.integration.ApplitoolsInitializer;
-import com.znsio.reportportal.integration.properties.Config;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -13,8 +12,6 @@ import com.znsio.rpap.pages.Page;
 import com.znsio.rpap.utils.DriverFactory;
 
 import java.net.MalformedURLException;
-import java.time.Duration;
-import java.util.Properties;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 import static com.znsio.rpap.utils.DriverFactory.WEB;
@@ -27,7 +24,7 @@ public class BaseTest extends ApplitoolsInitializer {
 
     @BeforeSuite
     public void suiteSetup() throws MalformedURLException {
-        log("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
+        logInfoMessage("Inside @BeforeSuite of " + BaseTest.class.getSimpleName());
         driver = DriverFactory.getDriver();
         wait = DriverFactory.getWait(driver);
         if (DriverFactory.getPlatform().equals(WEB)) {
@@ -35,23 +32,18 @@ public class BaseTest extends ApplitoolsInitializer {
         } else {
             ApplitoolsInitializer.driverSetupForApplitoolsInitializer((AppiumDriver) driver);
         }
-        log("Driver is ready");
+        logInfoMessage("Driver is ready");
     }
 
     @BeforeMethod
     public void methodSetup() {
         page = new Page(driver, wait);
-        log("Page setup is completed");
+        logInfoMessage("Page setup is completed");
     }
 
     @AfterSuite
     public void suiteTearDown() {
-        log("Killing driver");
+        logInfoMessage("Killing driver");
         DriverFactory.killDriver();
-    }
-
-    public void log(String message) {
-        LOGGER.info(message);
-        logInfoMessage(message);
     }
 }

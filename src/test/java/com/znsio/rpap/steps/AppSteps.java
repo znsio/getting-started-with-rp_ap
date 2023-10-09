@@ -31,31 +31,26 @@ public class AppSteps {
     public void performOperation(String operand1, String operator, String operand2) {
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         appPage.chooseNumber(operand1);
-        log("Selected No." + operand1);
+        logInfoMessage("Selected No." + operand1);
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 Target.region(By.id("digit" + operand1)));
         appPage.chooseOperation(operator);
-        log("Select Calculator Operation " + operator);
+        logInfoMessage("Select Calculator Operation " + operator);
         appPage.chooseNumber(operand2);
-        log("Select No." + operand2);
+        logInfoMessage("Select No." + operand2);
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),
                 Target.region(By.id("digit" + operand2)));
         captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
-        log("Select Calculator Operation " + EQUAL_OPERATOR);
+        logInfoMessage("Select Calculator Operation " + EQUAL_OPERATOR);
         appPage.chooseOperation(EQUAL_OPERATOR);
     }
 
     @Step
     public void verifyResult(String expected) {
-        log("Expected output " + expected);
+        logInfoMessage("Expected output " + expected);
         String actualOutput = appPage.getCalculatorDisplay();
-        log("Actual output " + actualOutput);
+        logInfoMessage("Actual output " + actualOutput);
         Assert.assertEquals(expected, actualOutput);
         captureAndAttachScreenshot(appDriver, "Final result captured");
-    }
-
-    private static void log(String message) {
-        LOGGER.info(message);
-        logInfoMessage(message);
     }
 }

@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
+import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
+
 
 //TODO: Consume BaseTest as a listener instead of an inherited class
 public class WebExampleTest extends BaseTest {
@@ -19,7 +21,7 @@ public class WebExampleTest extends BaseTest {
     @BeforeMethod
     public void webPageSetup() {
 
-        log("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
+        logInfoMessage("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
         webPage = page.getClassInstance(WebExample.class);
         webSteps = new WebSteps(driver, webPage, eyesOnWeb);
     }
