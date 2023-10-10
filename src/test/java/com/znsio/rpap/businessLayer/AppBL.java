@@ -16,6 +16,8 @@ public class AppBL {
 
     private static final Logger LOGGER = Logger.getLogger(AppBL.class.getName());
     private static final String EQUAL_OPERATOR = "equal";
+    private static final By ByCalculatorScreenXpath = By.xpath("//android.widget.EditText");
+
 
     private AppiumDriver appDriver;
     private AppExample appPage;
@@ -33,13 +35,13 @@ public class AppBL {
         appPage.chooseNumber(operand1);
         logInfoMessage("Selected No." + operand1);
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),
-                Target.region(By.id("digit" + operand1)));
+                Target.region(ByCalculatorScreenXpath));
         appPage.chooseOperation(operator);
         logInfoMessage("Select Calculator Operation " + operator);
         appPage.chooseNumber(operand2);
         logInfoMessage("Select No." + operand2);
         eyesOnApp.check(Thread.currentThread().getStackTrace()[1].getMethodName(),
-                Target.region(By.id("digit" + operand2)));
+                Target.region(ByCalculatorScreenXpath));
         captureAndAttachScreenshot(appDriver, "Data entered on Calculator");
         logInfoMessage("Select Calculator Operation " + EQUAL_OPERATOR);
         appPage.chooseOperation(EQUAL_OPERATOR);
