@@ -33,6 +33,7 @@ public class DriverFactory {
     private static String APPIUM_SERVER_URL;
 
 
+    public WebDriver launchWebApplication(WebDriver driver, String browserName, String appURL) {
     public static WebDriver getDriver() throws MalformedURLException {
         if (getPlatform().equals(WEB)) {
             return launchWebApplication(config.getProperty(Config.BROWSER),
