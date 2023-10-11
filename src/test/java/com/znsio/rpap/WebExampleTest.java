@@ -23,7 +23,7 @@ public class WebExampleTest extends BaseTest {
 
         logInfoMessage("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
         webPage = page.getClassInstance(WebExample.class);
-        webBL = new WebBL(driver, webPage, eyesOnWeb);
+        webBL = new WebBL(driver, webPage, applitoolsInitializer.getWebEyes());
     }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
@@ -44,8 +44,8 @@ public class WebExampleTest extends BaseTest {
             groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        webBL.performLogin(username, password);
-        webBL.verifyMessageAfterLogin(expectedMessage);
+        webSteps.performLogin(username, password);
+        webSteps.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
