@@ -26,30 +26,26 @@ public class WebExampleTest extends BaseTest {
         webBL = new WebBL(driver, webPage, applitoolsInitializer.getWebEyes());
     }
 
-    @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen",
-            groups = {"visual"})
+    @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen", groups = {"visual"})
     public void titleTest(String title) {
         webBL.verifyPageTitle(title);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password",
-            groups = {"visual"})
+    @Test(dataProvider = "getFromJson", description = "Validating login with valid username and password", groups = {"visual"})
     public void validLoginTest(String username, String password, String expectedMessage) throws InterruptedException {
 
         webBL.performLogin(username, password);
         webBL.verifyMessageAfterLogin(expectedMessage);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password",
-            groups = {"visual"})
+    @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password", groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
 
         webSteps.performLogin(username, password);
         webSteps.verifyMessageAfterLogin(expectedMessage);
     }
 
-    @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password",
-            groups = {"visual"})
+    @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password", groups = {"visual"})
     public void invalidPasswordTest(String username, String password, String expectedMessage)
             throws InterruptedException {
 
