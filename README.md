@@ -16,10 +16,16 @@ framework
 * [Applitools](https://applitools.com)
 * Build tool: [Maven](https://maven.apache.org/)
 
-## Documentation for integration with ReportPortal and Applitools
+## Configuring ReportPortal and Applitools
 
-* [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md)
-* [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md)
+* [ReportPortalPortal](https://github.com/znsio/ReportPortalIntegration/blob/main/README.md#how-to-configure-reportportal-in-your-automation-framework)
+* [ApplitoolsIntegration](https://github.com/znsio/ApplitoolsIntegration/blob/main/README.md#how-to-configure-applitools-visual-testing-in-your-automation-framework)
+
+## Pre-requisites for executing App Tests
+
+1. Install node-js and npm - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+2. To install Appium and other dependency - Execute `npm install`
 
 ## Build
 
@@ -46,29 +52,36 @@ framework
 
 ### WebTests
 
-`mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
+`mvn clean test -DsuiteXmlFile=TestNG/webTestng.xml -DCONFIG=src/test/resources/config/webConfig.properties`
 
 ### AppTests
 
-#### [WIP] Android
+#### Android
 
-`mvn clean test -DsuiteXmlFile=testng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
+`mvn clean test -DsuiteXmlFile=TestNG/androidTestng.xml -DCONFIG=src/test/resources/config/androidConfig.properties`
 
 ## How the Dashboards look
 
 ### ReportPortal
+
 #### Launch Page/Dashboard
+
 <img width="1728" alt="RP_LaunchPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/fd24cac2-8e90-48ea-b9e0-0db162281e1b">
 
 #### Test Name Page
+
 <img width="1727" alt="RP_TestNamePage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/ec9d7cf8-c3e5-42e9-aa94-750bf3e1f7a1">
 
 #### Test Execution/Logs Page
+
 <img width="1728" alt="RP_TestExecutionPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/929abb61-dfc2-4e36-80a2-27c6d596c669">
 
 ### Applitools (Visual Testing)
+
 #### Test Execution/Dashboard
+
 <img width="1727" alt="AP_TestExecutionPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/7852f86a-d490-4b7b-82ab-f775866d75cf">
 
 #### Batch Details
+
 <img width="364" alt="AP_BatchPage" src="https://github.com/znsio/getting-started-with-rp_ap/assets/121366435/0f7fbaba-a50c-4787-954e-bdb7e2116be2">

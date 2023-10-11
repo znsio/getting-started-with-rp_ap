@@ -1,4 +1,4 @@
-package com.znsio.rpap.steps;
+package com.znsio.rpap.businessLayer;
 
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
@@ -11,12 +11,12 @@ import org.testng.Assert;
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.captureAndAttachScreenshot;
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
-public class WebSteps {
-    private static final Logger LOGGER = Logger.getLogger(WebSteps.class.getName());
+public class WebBL {
+    private static final Logger LOGGER = Logger.getLogger(WebBL.class.getName());
     private WebDriver webDriver;
     private WebExample webPage;
     private Eyes eyesOnWeb;
-    public WebSteps(WebDriver webDriver, WebExample webPage, Eyes eyesOnWeb) {
+    public WebBL(WebDriver webDriver, WebExample webPage, Eyes eyesOnWeb) {
         this.webDriver = webDriver;
         this.webPage = webPage;
         this.eyesOnWeb = eyesOnWeb;
@@ -31,7 +31,7 @@ public class WebSteps {
 
     @Step
     public void performLogin(String username, String password) throws InterruptedException {
-        log("Entering username and password");
+        logInfoMessage("Entering username and password");
         webPage.login(username, password);
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
     }
@@ -41,10 +41,5 @@ public class WebSteps {
         captureAndAttachScreenshot(webDriver, "Verifying post login message");
         eyesOnWeb.check(Thread.currentThread().getStackTrace()[1].getMethodName(), Target.window());
         Assert.assertEquals(webPage.getPostSubmitMessage(), expectedMessage);
-    }
-
-    private static void log(String message) {
-        LOGGER.info(message);
-        logInfoMessage(message);
     }
 }

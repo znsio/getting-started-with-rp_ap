@@ -1,5 +1,6 @@
 package com.znsio.rpap.pages;
 
+import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

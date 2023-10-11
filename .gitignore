@@ -6,6 +6,7 @@
 .DS_Store
 TestReport/
 logs/
+node_modules/
 
 # Log file
 *.log
@@ -28,3 +29,6 @@ logs/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# App for local
+drivers
