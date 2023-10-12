@@ -1,7 +1,7 @@
 package com.znsio.rpap;
 
-import com.znsio.rpap.pages.WebExample;
 import com.znsio.rpap.businessLayer.WebBL;
+import com.znsio.rpap.pages.WebExample;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
 import org.testng.annotations.BeforeMethod;
