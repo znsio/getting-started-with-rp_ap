@@ -23,9 +23,9 @@ public class BasePage extends Page {
         String tagName = ele.getTagName();
         scrollToView(by);
         Map<String, Runnable> inputHandlers = new HashMap<>();
-        inputHandlers.put("select", () -> handleSelectInput(ele, dataToInput));
-        inputHandlers.put("textarea", () -> handleTextareaInput(ele, dataToInput));
-        inputHandlers.put("input", () -> handleTextInput(ele, dataToInput));
+        inputHandlers.put("select", () -> selectInputFromDropdown(ele, dataToInput));
+        inputHandlers.put("textarea", () -> enterTextInTextarea(ele, dataToInput));
+        inputHandlers.put("input", () -> enterTextInTextField(ele, dataToInput));
         Runnable handler = inputHandlers.get(tagName.toLowerCase());
         if (handler != null) {
             handler.run();
@@ -34,18 +34,18 @@ public class BasePage extends Page {
         }
     }
 
-    private void handleSelectInput(WebElement element, String dataToInput) {
+    private void selectInputFromDropdown(WebElement element, String dataToInput) {
         Select dropdown = new Select(element);
         dropdown.selectByVisibleText(dataToInput);
     }
 
-    private void handleTextareaInput(WebElement element, String dataToInput) {
+    private void enterTextInTextarea(WebElement element, String dataToInput) {
         element.clear();
         element.sendKeys(dataToInput);
         element.sendKeys(Keys.TAB);
     }
 
-    private void handleTextInput(WebElement element, String dataToInput) {
+    private void enterTextInTextField(WebElement element, String dataToInput) {
         String inputType = element.getAttribute("type");
 
         if (inputType.equals("text") || inputType.equals("email") || inputType.equals("password")) {
