@@ -19,7 +19,7 @@ public class AppExampleTest extends BaseTest {
     private void handleCalculatorPopUps() {
         logInfoMessage("Inside @BeforeMethod of " + AppExampleTest.class.getSimpleName());
         appPage = page.getClassInstance(AppExample.class);
-        appBL = new AppBL((AppiumDriver) driver, appPage, eyesOnApp);
+        appBL = new AppBL((AppiumDriver) driver, appPage, applitoolsInitializer.getAppEyes());
         logInfoMessage("Handling if any popUps are shown in the app");
         appPage.handlePopupIfPresent();
         appPage.clearScreen();

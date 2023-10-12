@@ -2,6 +2,7 @@ package com.znsio.rpap;
 
 import com.znsio.applitools.integration.ApplitoolsInitializer;
 import com.znsio.rpap.pages.Page;
+import com.znsio.rpap.utils.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ import org.testng.xml.XmlTest;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 import static com.znsio.rpap.utils.DriverFactory.WEB;
@@ -35,7 +37,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void methodSetup(Method method) {
+    public void methodSetup(Method method) throws MalformedURLException {
         logInfoMessage("Inside @BeforeMethod of " + BaseTest.class.getSimpleName());
         driver = DriverFactory.getDriver();
         wait = DriverFactory.getWait(driver);
