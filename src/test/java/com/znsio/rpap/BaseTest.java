@@ -2,7 +2,6 @@ package com.znsio.rpap;
 
 import com.znsio.applitools.integration.ApplitoolsInitializer;
 import com.znsio.rpap.pages.Page;
-import com.znsio.rpap.utils.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +47,7 @@ public class BaseTest {
         } else {
             applitoolsInitializer.driverSetupForApplitoolsInitializer((AppiumDriver) driver);
         }
-        applitoolsInitializer.initiateApplitoolsInitializer(method);
+        applitoolsInitializer.initiateApplitoolsInitializer(method, driver);
     }
 
     @AfterMethod
