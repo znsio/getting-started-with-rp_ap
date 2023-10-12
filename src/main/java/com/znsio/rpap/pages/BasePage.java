@@ -9,51 +9,51 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BasePage extends Page {
 
     public BasePage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
-    //TODO: Simplify this method. Avoid the usage of Nested else-if
     public void inputDataToElement(By by, String dataToInput) {
-
         WebElement ele = driver.findElement(by);
         String tagName = ele.getTagName();
+        scrollToView(by);
+        Map<String, Runnable> inputHandlers = new HashMap<>();
+        inputHandlers.put("select", () -> selectInputFromDropdown(ele, dataToInput));
+        inputHandlers.put("textarea", () -> enterTextInTextarea(ele, dataToInput));
+        inputHandlers.put("input", () -> enterTextInTextField(ele, dataToInput));
+        Runnable handler = inputHandlers.get(tagName.toLowerCase());
+        if (handler != null) {
+            handler.run();
+        } else {
+            throw new UnsupportedOperationException("Unsupported input type: " + tagName);
+        }
+    }
 
-        if (tagName.equals("select")) {
+    private void selectInputFromDropdown(WebElement element, String dataToInput) {
+        Select dropdown = new Select(element);
+        dropdown.selectByVisibleText(dataToInput);
+    }
 
-            scrollToView(by);
-            Select dropdown = new Select(ele);
-            dropdown.selectByVisibleText(dataToInput);
+    private void enterTextInTextarea(WebElement element, String dataToInput) {
+        element.clear();
+        element.sendKeys(dataToInput);
+        element.sendKeys(Keys.TAB);
+    }
 
-        } else if (tagName.equals("textarea")) {
+    private void enterTextInTextField(WebElement element, String dataToInput) {
+        String inputType = element.getAttribute("type");
 
-            scrollToView(by);
-            ele.clear();
-            ele.sendKeys(new CharSequence[]{dataToInput});
-            ele.sendKeys(new CharSequence[]{Keys.TAB});
-
-        } else if (tagName.equals("input")) {
-            String inputType = ele.getAttribute("type");
-            scrollToView(by);
-
-            if ((inputType.equals("text")) || (inputType.equals("email")) || (inputType.equals("password"))) {
-                ele.clear();
-                ele.sendKeys(new CharSequence[]{dataToInput});
-                ele.sendKeys(new CharSequence[]{Keys.TAB});
-            } else if (inputType.equals("checkbox")) {
-                if ((!ele.isSelected()) && (dataToInput.equals("1"))) {
-                    ele.click();
-
-                } else if ((ele.isSelected()) && (dataToInput.equals("0"))) {
-                    ele.click();
-                }
-            } else if (inputType.equals("radio")) {
-                if ((!ele.isSelected()) && (dataToInput.equals("1"))) {
-                    ele.click();
-                }
-            }
+        if (inputType.equals("text") || inputType.equals("email") || inputType.equals("password")) {
+            element.clear();
+            element.sendKeys(dataToInput);
+            element.sendKeys(Keys.TAB);
+        } else {
+            throw new UnsupportedOperationException("Unsupported input type: " + inputType);
         }
     }
 
