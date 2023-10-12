@@ -41,8 +41,8 @@ public class WebExampleTest extends BaseTest {
     @Test(dataProvider = "getFromJson", description = "Validating login with invalid username and valid password", groups = {"visual"})
     public void invalidUserTest(String username, String password, String expectedMessage) throws InterruptedException {
 
-        webSteps.performLogin(username, password);
-        webSteps.verifyMessageAfterLogin(expectedMessage);
+        webBL.performLogin(username, password);
+        webBL.verifyMessageAfterLogin(expectedMessage);
     }
 
     @Test(dataProvider = "getFromJson", description = "Validate login with valid username and invalid password", groups = {"visual"})
