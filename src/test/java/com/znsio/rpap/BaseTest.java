@@ -64,9 +64,4 @@ public class BaseTest {
         logInfoMessage("Inside @AfterSuite of " + BaseTest.class.getSimpleName());
         applitoolsInitializer.closeBatch();
     }
-
-    public void log(String message) {
-        LOGGER.info(message);
-        logInfoMessage(message);
-    }
 }

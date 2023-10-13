@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.github.znsio</groupId>
             <artifactId>ApplitoolsIntegration</artifactId>
-            <version>5e507fbf56</version>
+            <version>6b17819</version>
         </dependency>
         <dependency>
             <groupId>io.appium</groupId>

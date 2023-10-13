@@ -28,7 +28,6 @@ public class DriverFactory {
     public static final String WEB = "web";
     private static final Logger LOGGER = Logger.getLogger(DriverFactory.class.getName());
     private static final Properties config = Config.loadProperties(System.getProperty("CONFIG"));
-    private static WebDriver webDriver;
     private static AppiumDriverLocalService localAppiumServer;
     private static String APPIUM_SERVER_URL;
 
@@ -58,7 +57,7 @@ public class DriverFactory {
 
     public static void killDriver() {
         if (getPlatform().equals(WEB)) {
-            webDriver.quit();
+            DriverManager.getDriver().quit();
         } else {
             stopAppiumServer();
         }
@@ -69,6 +68,7 @@ public class DriverFactory {
     }
 
     private static WebDriver launchWebApplication(String browserName, String appURL) {
+        WebDriver webDriver;
         if (browserName.equalsIgnoreCase("firefox")) {
             webDriver = new FirefoxDriver();
         } else {
@@ -78,7 +78,7 @@ public class DriverFactory {
         webDriver.manage().window().maximize();
         webDriver.manage().deleteAllCookies();
         DriverManager.addDriver(webDriver);
-        return webDriver;
+        return DriverManager.getDriver();
     }
 
     private static AppiumDriver launchMobileApplication(String platform, String automationDriver, String
