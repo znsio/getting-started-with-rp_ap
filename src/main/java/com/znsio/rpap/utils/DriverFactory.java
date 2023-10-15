@@ -75,7 +75,6 @@ public class DriverFactory {
             webDriver = new ChromeDriver();
         }
         webDriver.get(appURL);
-        webDriver.manage().window().maximize();
         webDriver.manage().deleteAllCookies();
         DriverManager.addDriver(webDriver);
         return DriverManager.getDriver();
