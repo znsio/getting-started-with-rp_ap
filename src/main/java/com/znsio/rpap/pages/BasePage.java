@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage extends Page {
 
     public BasePage(WebDriver driver, WebDriverWait wait) {
-        super(DriverManager.getDriver(), wait);
+        super(driver, wait);
     }
 
     //TODO: Simplify this method. Avoid the usage of Nested else-if
@@ -59,12 +59,12 @@ public class BasePage extends Page {
     }
 
     public String getTitle() {
-        return DriverManager.getDriver().getTitle();
+        return driver.getTitle();
     }
 
     public void scrollToView(By by) {
-        JavascriptExecutor jsDriver = (JavascriptExecutor) DriverManager.getDriver();
-        jsDriver.executeScript("arguments[0].scrollIntoView(true);", DriverManager.getDriver().findElement(by));
+        JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
+        jsDriver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(by));
     }
 
     public void pageLoadWait(WebDriverWait wait) {
