@@ -1,5 +1,6 @@
 package com.znsio.rpap.pages;
 
+import com.znsio.rpap.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -12,13 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage extends Page {
 
     public BasePage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+        super(DriverManager.getDriver(), wait);
     }
 
     //TODO: Simplify this method. Avoid the usage of Nested else-if
     public void inputDataToElement(By by, String dataToInput) {
 
-        WebElement ele = driver.findElement(by);
+        WebElement ele = DriverManager.getDriver().findElement(by);
         String tagName = ele.getTagName();
 
         if (tagName.equals("select")) {
@@ -58,12 +59,12 @@ public class BasePage extends Page {
     }
 
     public String getTitle() {
-        return driver.getTitle();
+        return DriverManager.getDriver().getTitle();
     }
 
     public void scrollToView(By by) {
-        JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
-        jsDriver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(by));
+        JavascriptExecutor jsDriver = (JavascriptExecutor) DriverManager.getDriver();
+        jsDriver.executeScript("arguments[0].scrollIntoView(true);", DriverManager.getDriver().findElement(by));
     }
 
     public void pageLoadWait(WebDriverWait wait) {

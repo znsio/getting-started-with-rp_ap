@@ -1,5 +1,6 @@
 package com.znsio.rpap.pages;
 
+import com.znsio.rpap.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class WebExample extends BasePage {
 
     public WebExample(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+        super(DriverManager.getDriver(), wait);
         pageLoadWait(wait);
     }
 
@@ -19,21 +20,21 @@ public class WebExample extends BasePage {
 
 
     public String pageTitle() {
-        return driver.getTitle();
+        return DriverManager.getDriver().getTitle();
     }
 
     public void login(String username, String password) throws InterruptedException {
         inputDataToElement(usernameField, username);
         inputDataToElement(passwordField, password);
-        driver.findElement(submitButton).click();
+        DriverManager.getDriver().findElement(submitButton).click();
         Thread.sleep(200);
     }
 
     public String getPostSubmitMessage() {
-        if (driver.findElements(postSubmitErrorMessage).size() > 0) {
-            return driver.findElement(postSubmitErrorMessage).getText();
+        if (DriverManager.getDriver().findElements(postSubmitErrorMessage).size() > 0) {
+            return DriverManager.getDriver().findElement(postSubmitErrorMessage).getText();
         } else {
-            return driver.findElement(postSubmitSuccessMessage).getText();
+            return DriverManager.getDriver().findElement(postSubmitSuccessMessage).getText();
         }
     }
 }
