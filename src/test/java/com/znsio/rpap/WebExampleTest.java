@@ -4,26 +4,40 @@ import com.znsio.rpap.businessLayer.WebBL;
 import com.znsio.rpap.pages.WebExample;
 import com.znsio.rpap.utils.JsonDataManager;
 import com.znsio.rpap.utils.JsonDataProvider;
+import org.openqa.selenium.WebDriver;
+import org.testng.ISuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlTest;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
 
 //TODO: Consume BaseTest as a listener instead of an inherited class
-public class WebExampleTest extends BaseTest {
+public class WebExampleTest {
     private WebExample webPage;
     private WebBL webBL;
+    private BaseTest bt;
+
+
+    @BeforeSuite
+    public void getBaseTest(XmlTest suite) throws IOException {
+        bt = new BaseTest();
+        bt.suiteSetup(suite);
+    }
 
     @BeforeMethod
-    public void webPageSetup() {
-
+    public void webPageSetup(Method method) throws MalformedURLException {
+        bt.methodSetup(method);
         logInfoMessage("Inside @BeforeMethod of " + WebExampleTest.class.getSimpleName());
-        webPage = page.getClassInstance(WebExample.class);
-        webBL = new WebBL(driver, webPage, applitoolsInitializer.getWebEyes());
+        webPage = bt.page.getClassInstance(WebExample.class);
+        webBL = new WebBL(bt.driver, webPage, bt.applitoolsInitializer.getWebEyes());
     }
 
     @Test(dataProvider = "getFromJson", priority = -1, description = "Validate Title of the Screen", groups = {"visual"})
