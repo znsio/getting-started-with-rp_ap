@@ -18,8 +18,6 @@ import java.net.MalformedURLException;
 
 import static com.znsio.reportportal.integration.utils.ReportPortalLogger.logInfoMessage;
 
-
-//TODO: Consume BaseTest as a listener instead of an inherited class
 public class WebExampleTest {
     private WebExample webPage;
     private WebBL webBL;
