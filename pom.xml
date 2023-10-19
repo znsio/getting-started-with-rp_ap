@@ -70,7 +70,10 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>com.znsio.reportportal.integration.listener.ReportPortalListener</value>
+                            <value>
+                                com.znsio.reportportal.integration.listener.ReportPortalListener,
+                                com.znsio.rpap.BaseTest
+                            </value>
                         </property>
                     </properties>
                 </configuration>
